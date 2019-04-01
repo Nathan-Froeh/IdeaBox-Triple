@@ -1,0 +1,33 @@
+HTML {
+    height: 100%
+}
+body {
+    font-family: 'Open Sans', sans-serif;
+    border: 1px solid;
+    display: flex;
+    height: 100%;
+}
+nav {
+    color: #ffffff;
+    font-weight: lighter;
+    background-color: #1f1f3d;
+    width: 25%;
+    height: 100%;
+    border: 1px solid;
+    flex-direction: column
+}
+h1 {
+    font-size: 16px;
+}
+h3 {
+    font-size: 14px;
+}
+ul {
+    list-style: none;
+}
+.menu-button {
+    font-size: 16px;
+    background-color: #5356a4;
+    border: none;
+    width: 90%;
+}
