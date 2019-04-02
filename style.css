@@ -100,7 +100,7 @@ body {
         font-size: 20px;
         height: 10%;
         margin: 3% 0%;
-        width: 98%;
+        width: 100%;
     }
     #ideabox-body-input {
         border: 2px solid #353567;
@@ -108,7 +108,7 @@ body {
         height: 30%;
         margin: 1% 0%;
         resize: none;
-        width: 98%;
+        width: 100%;
     }
     #ideabox-save-button {
         background-color: #1f1f3d;
