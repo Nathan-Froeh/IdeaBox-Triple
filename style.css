@@ -23,14 +23,14 @@ body {
 }
     nav {
         border-bottom: 1px solid #353567;
-        height: 85%;
+        height: 65%;
         margin-left: 5px;
         width: 95%;
     }
     #menubar-starred-ideas-box {
         border-bottom: 1px solid #353567;
         border-top: 1px solid #353567;
-        height: 30%;
+        height: 20%;
     }
     h3 {
         font-size: 14px;
@@ -39,14 +39,14 @@ body {
     }
 
     #menubar-list {
-        margin-left: -50px;
+        margin-left: 5px;
     }
     ul li:hover {
         background-color: #d14119;
     }
     ul li {
         font-size: 18px;
-        height: 50px;
+        height: 45px;
         list-style: none;
         margin-left: 10px;
         width: 100%;
@@ -79,20 +79,23 @@ body {
     #ideabox-form {
         font-size: 20px;
         height: 90%;
-        margin-top: 2%;
+        margin-top: 0.5%;
         width: 40%;
+    }
+    .ideabox-form-label {
+        font-size: 3vh;
     }
     #ideabox-title-input {
         border: 2px solid #353567;
         font-size: 20px;
-        height: 35px;
-        margin: 1% 0%;
+        height: 10%;
+        margin: 3% 0%;
         width: 98%;
     }
     #ideabox-body-input {
         border: 2px solid #353567;
         font-size: 14px;
-        height: 80px;
+        height: 30%;
         margin: 1% 0%;
         resize: none;
         width: 98%;
@@ -101,13 +104,14 @@ body {
         background-color: #1f1f3d;
         border: 2px solid #353567;
         color: #ffffff;
-        height: 35px;
+        height: 10%;
         margin: 1% 0%;
         width: 100%;
+        margin: 3% 0%;
     }
     #ideabox-search-input {
         border: 2px solid #353567;
-        height: 35px;
+        height: 10%;
         width: 100%;
     }
 #div3 {
