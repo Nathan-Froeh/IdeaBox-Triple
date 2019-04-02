@@ -8,7 +8,6 @@
     <title>Idea Box</title>
 </head>
 <body>
-    <div class = 'container'>
     <div id="div1" class="grid-item">
         <nav>
             <h1>IdeaBox Redux</h1>
@@ -16,7 +15,7 @@
                 <h3>Filter Starred Ideas</h3>
                 <button class = 'menu-button'>Show Starred Ideas</button>
             </div>
-            <div id="menubar-quality-box">
+            <div id="menubar-quality-box"> 
                 <h3>Filter by Quality</h3>
                 <ul id="menubar-list">
                     <li>Swill</li>
@@ -25,7 +24,7 @@
                 </ul>
                 <label for="input-menubar">
                 <h3>New Quality</h3>
-                <input type="text" id ='new-quality-input'>
+                <textarea id ='new-quality-input'></textarea>
                 </label>
                 <button class = 'menu-button'>Add New Quality</button>
             </div>
@@ -39,12 +38,11 @@
             <br />
             <label for="ideabox-body-input" class="ideabox-form-label">Body</label>
             <br />
-            <input type="text" id="ideabox-body-input">
+            <textarea id="ideabox-body-input"></textarea>
             <br />
             <button id="ideabox-save-button">Save</button>
             <input type="search" id="ideabox-search-input">
         </form>
     </div>
     <div id="div3" class="grid-item"></div>
-    </div>
 </body>
