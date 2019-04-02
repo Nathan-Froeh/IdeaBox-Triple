@@ -8,47 +8,41 @@
     <title>Idea Box</title>
 </head>
 <body>
-    <nav>
-        <h1>IdeaBox Redux</h1>
-        <h3>Filter Starred Ideas</h3>
-        <button class = 'menu-button '>Show Starred Ideas</button>
-        <h3>Filter by Quality</h3>
-        <ul>
-            <li>Swill</li>
-            <li>Plausible</li>
-            <li>Genius</li>
-        </ul>
-        <label for="input-menubar">
-        <h3>New Quality</h3>
-        <input type="text" id = 'new-quality-input'>
-        </label>
-        <button class = 'menu-button'>Add New Quality</button>
-    </nav>
-   
-    <section id = 'idea-box'>
-        <form action="">
-            <label for="idea-title">Title</label>
-            <input type="text" id = 'idea-title'>
-            <label for="idea-body">Body</label>
-            <input type="text" id = 'idea-body'>
-            <button id = 'idea-save'>Save</button>
-            <button id = 'idea-search'></button>
-            <input type="text" id = 'idea-search-input'>
-        </form>
-    </section>
-
-    <section id = 'storage-box'>
-        <div class = 'idea-card'>
-            <div class = 'idea-card-top'></div>
-            <article>
-                <h4>Idea title</h4>
-                <p></p>
-            </article>
-            <div class = 'idea-card-bottom'>
-                <p>Quality:</p>
+    <div id="div1" class="grid-item">
+        <nav>
+            <h1>IdeaBox Redux</h1>
+            <div id="menubar-starred-ideas-box">
+                <h3>Filter Starred Ideas</h3>
+                <button class = 'menu-button'>Show Starred Ideas</button>
             </div>
-        </div>
-    </section>
-
+            <div id="menubar-quality-box">
+                <h3>Filter by Quality</h3>
+                <ul id="menubar-list">
+                    <li>Swill</li>
+                    <li>Plausible</li>
+                    <li>Genius</li>
+                </ul>
+                <label for="input-menubar">
+                <h3>New Quality</h3>
+                <input type="text" id ='new-quality-input'>
+                </label>
+                <button class = 'menu-button'>Add New Quality</button>
+            </div>
+        </nav>
+    </div>
+    <div id="div2" class="grid-item">
+        <form id="ideabox-form">
+            <label for="ideabox-title-input" class="ideabox-form-label">Title</label>
+            <br />
+            <input type="text" id="ideabox-title-input">
+            <br />
+            <label for="ideabox-body-input" class="ideabox-form-label">Body</label>
+            <br />
+            <input type="text" id="ideabox-body-input">
+            <br />
+            <button id="ideabox-save-button">Save</button>
+            <input type="search" id="ideabox-search-input">
+        </form>
+    </div>
+    <div id="div3" class="grid-item"></div>
 </body>
-</html>
