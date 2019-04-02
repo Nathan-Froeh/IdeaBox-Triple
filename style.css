@@ -1,33 +1,113 @@
 HTML {
-    height: 100%
+    height: 100%;    
+}
+* {
+    font-family: 'Open sans', sans-serif;
 }
 body {
-    font-family: 'Open Sans', sans-serif;
-    border: 1px solid;
+    display: grid;
+    grid-template-columns: 25% auto;
+    grid-template-rows: 45% auto;
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+#div1 {
+    color: #eaeaf4;
     display: flex;
-    height: 100%;
-}
-nav {
-    color: #ffffff;
-    font-weight: lighter;
-    background-color: #1f1f3d;
-    width: 25%;
-    height: 100%;
+    grid-row-start: 1;
+    grid-row-end: 3;
     border: 1px solid;
-    flex-direction: column
+    background-color: #1f1f3d;
 }
-h1 {
-    font-size: 16px;
+    nav {
+        width: 95%;
+        height: 85%;
+        border-bottom: 1px solid #353567;
+        margin-left: 5px;
+    }
+    #menubar-starred-ideas-box {
+        border-top: 1px solid #353567;
+        border-bottom: 1px solid #353567;
+        height: 30%;
+    }
+    h3 {
+        margin-left: 10px;
+        font-size: 14px;
+        font-weight: lighter;
+    }
+
+    #menubar-list {
+        margin-left: -50px;
+    }
+    ul li:hover {
+        background-color: #d14119;
+    }
+    ul li {
+        height: 50px;
+        width: 100%;
+        margin-left: 10px;
+        font-size: 18px;
+        list-style: none;
+    }
+    #new-quality-input {
+        background-color: #e9e9f3;
+        border: 2px solid #353567;
+        width: 98%;
+        margin-left: 3px;
+        margin-bottom: 10px;
+        height: 35px;
+        border: none;
+    }
+    .menu-button {
+        font-size: 16px;
+        color: #eaeaf3;
+        margin-top: 15px;
+        height: 35px;
+        border: 2px solid #353567;
+        background-color: #5356a4;
+        width: 100%;
+        padding: 0px;
+    }
+#div2 {
+    display: flex;
+    justify-content: center;
+    background-color: #a9aad2;
 }
-h3 {
-    font-size: 14px;
-}
-ul {
-    list-style: none;
-}
-.menu-button {
-    font-size: 16px;
-    background-color: #5356a4;
-    border: none;
-    width: 90%;
+    #ideabox-form {
+        font-size: 20px;
+        height: 90%;
+        width: 40%;
+        margin-top: 2%;
+    }
+    #ideabox-title-input {
+        border: 2px solid #353567;
+        width: 100%;
+        height: 35px;
+        margin: 1% 0%;
+    }
+    #ideabox-body-input {
+        border: 2px solid #353567;
+        width: 100%;
+        height: 80px;
+        margin: 1% 0%;
+    }
+    #ideabox-save-button {
+        color: #ffffff;
+        width: 100%;
+        height: 35px;
+        margin: 1% 0%;
+        border: 2px solid #353567;
+        background-color: #1f1f3d
+    }
+    #ideabox-search-input {
+        width: 100%;
+        height: 35px;
+    }
+#div3 {
+    display: flex;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    background-color: #eaeaf4;
 }
