@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
     <title>Idea Box</title>
 </head>
 <body>
@@ -38,13 +39,18 @@
 
     <section id = 'storage-box'>
         <div class = 'idea-card'>
-            <div class = 'idea-card-top'></div>
+            <div class = 'idea-card-top'>
+                <img src = 'Images/star.svg' id = 'star'>
+                <img src = 'Images/delete.svg' id = 'delete'>
+            </div>
             <article>
                 <h4>Idea title</h4>
                 <p></p>
             </article>
             <div class = 'idea-card-bottom'>
-                <p>Quality:</p>
+                <img src = 'Images/upvote.svg' id = 'upvote-deact'>
+                <p class = 'quality'>Quality:</p>
+                <img src = 'Images/downvote.svg' id = 'downvote-deact'>
             </div>
         </div>
     </section>
