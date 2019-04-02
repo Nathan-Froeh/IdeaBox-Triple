@@ -83,11 +83,13 @@ body {
     }
     #ideabox-title-input {
         border: 2px solid #353567;
+        font-size: 20px;
         height: 35px;
         margin: 1% 0%;
         width: 100%;
     }
     #ideabox-body-input {
+        font-size: 14px;
         border: 2px solid #353567;
         resize: none;
         height: 80px;
