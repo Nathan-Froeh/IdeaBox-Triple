@@ -58,6 +58,7 @@ body {
         height: 35px;
         margin-bottom: 10px;
         margin-left: 3px;
+        resize: none;
         width: 98%;
     }
     .menu-button {
@@ -86,15 +87,15 @@ body {
         font-size: 20px;
         height: 35px;
         margin: 1% 0%;
-        width: 100%;
+        width: 98%;
     }
     #ideabox-body-input {
-        font-size: 14px;
         border: 2px solid #353567;
-        resize: none;
+        font-size: 14px;
         height: 80px;
         margin: 1% 0%;
-        width: 100%;
+        resize: none;
+        width: 98%;
     }
     #ideabox-save-button {
         background-color: #1f1f3d;
