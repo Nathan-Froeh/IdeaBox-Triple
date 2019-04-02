@@ -3,42 +3,45 @@ HTML {
 }
 * {
     font-family: 'Open sans', sans-serif;
+    box-sizing: border-box;
 }
 body {
     display: grid;
     grid-template-columns: 25% auto;
     grid-template-rows: 45% auto;
     height: 100%;
-    width: 100%;
     margin: 0px;
     padding: 0px;
+    width: 100%;
 }
+
 
 /*Menu Bar Aside*/
 
 #menu-bar {
+
+    background-color: #1f1f3d;
+    border: 1px solid;
     color: #eaeaf4;
     display: flex;
-    grid-row-start: 1;
     grid-row-end: 3;
-    border: 1px solid;
-    background-color: #1f1f3d;
+    grid-row-start: 1;
 }
     nav {
-        width: 95%;
-        height: 85%;
         border-bottom: 1px solid #353567;
+        height: 500px;
         margin-left: 5px;
+        width: 95%;
     }
     #menubar-starred-ideas-box {
-        border-top: 1px solid #353567;
         border-bottom: 1px solid #353567;
-        height: 30%;
+        border-top: 1px solid #353567;
+        height: 115px;
     }
     h3 {
-        margin-left: 10px;
         font-size: 14px;
         font-weight: lighter;
+        margin-left: 10px;
     }
 
     #menubar-list {
@@ -48,67 +51,73 @@ body {
         background-color: #d14119;
     }
     ul li {
-        height: 50px;
-        width: 100%;
-        margin-left: 10px;
         font-size: 18px;
+        height: 40px;
         list-style: none;
+        margin-left: 10px;
+        width: 100%;
     }
     #new-quality-input {
         background-color: #e9e9f3;
         border: 2px solid #353567;
-        width: 98%;
-        margin-left: 3px;
-        margin-bottom: 10px;
-        height: 35px;
         border: none;
+        height: 35px;
+        margin-bottom: 10px;
+        margin-left: 3px;
+        width: 98%;
     }
     .menu-button {
-        font-size: 16px;
-        color: #eaeaf3;
-        margin-top: 15px;
-        height: 35px;
-        border: 2px solid #353567;
         background-color: #5356a4;
-        width: 100%;
+        border: 2px solid #353567;
+        color: #eaeaf3;
+        font-size: 16px;
+        height: 35px;
+        margin-top: 15px;
         padding: 0px;
+        width: 100%;
     }
+
 /*Idea Box Section*/
 
 #idea-box {
+
+    background-color: #a9aad2;
     display: flex;
     justify-content: center;
-    background-color: #a9aad2;
 }
     #ideabox-form {
         font-size: 20px;
         height: 90%;
-        width: 40%;
         margin-top: 2%;
+        width: 40%;
     }
     #ideabox-title-input {
         border: 2px solid #353567;
-        width: 100%;
+        font-size: 20px;
         height: 35px;
         margin: 1% 0%;
+        width: 100%;
     }
     #ideabox-body-input {
+        font-size: 14px;
         border: 2px solid #353567;
-        width: 100%;
+        resize: none;
         height: 80px;
         margin: 1% 0%;
+        width: 100%;
     }
     #ideabox-save-button {
+        background-color: #1f1f3d;
+        border: 2px solid #353567;
         color: #ffffff;
-        width: 100%;
         height: 35px;
         margin: 1% 0%;
-        border: 2px solid #353567;
-        background-color: #1f1f3d
+        width: 100%;
     }
     #ideabox-search-input {
-        width: 100%;
+        border: 2px solid #353567;
         height: 35px;
+        width: 100%;
     }
 
 /*Storage Box Section*/
@@ -116,7 +125,6 @@ body {
 #storage-box {
 		padding: 10px;
     display: flex;
-    grid-column-start: 2;
     grid-column-end: 3;
     background-color: #eaeaf4;
     display: flex;
