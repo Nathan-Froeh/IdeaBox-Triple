@@ -8,7 +8,7 @@
     <title>Idea Box</title>
 </head>
 <body>
-    <div id="div1" class="grid-item">
+    <aside id="menu-bar" class="grid-item">
         <nav>
             <h1>IdeaBox Redux</h1>
             <div id="menubar-starred-ideas-box">
@@ -29,8 +29,8 @@
                 <button class ='menu-button' id ='addQualityButton'>Add New Quality</button>
             </div>
         </nav>
-    </div>
-    <div id="div2" class="grid-item">
+    </aside>
+    <section id="idea-box" class="grid-item">
         <form id="ideabox-form">
             <label for="ideabox-title-input" class="ideabox-form-label">Title</label>
             <br />
@@ -43,6 +43,22 @@
             <button id="ideabox-save-button">Save</button>
             <input type="search" id="ideabox-search-input">
         </form>
-    </div>
-    <div id="div3" class="grid-item"></div>
+    </section>
+    <section id="storage-box" class="grid-item">
+        <div class = 'idea-card'>
+            <div class = 'idea-card-top'>
+                <img src = 'Images/star.svg' id = 'star'>
+                <img src = 'Images/delete.svg' id = 'delete'>
+            </div>
+            <article>
+                <h4 class = 'idea-card-title'>Idea title</h4>
+                <p class = 'idea-card-text'>Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test</p>
+            </article>
+            <div class = 'idea-card-bottom'>
+                <img src = 'Images/upvote.svg' id = 'upvote-deact'>
+                <p class = 'quality'>Quality:</p>
+                <img src = 'Images/downvote.svg' id = 'downvote-deact'>
+            </div>
+        </div>
+    </section>
 </body>
