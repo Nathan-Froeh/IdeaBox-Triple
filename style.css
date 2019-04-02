@@ -1,10 +1,16 @@
-HTML {
-    height: 100%;    
+
+.container{
+    display:grid;
+    width:100%;
+    height:100%;
+    grid-template-columns: 20% 80%;
+    grid-template-rows: 700px 1fr;
 }
+
 * {
     font-family: 'Open sans', sans-serif;
 }
-body {
+/*body {
     display: grid;
     grid-template-columns: 25% auto;
     grid-template-rows: 45% auto;
@@ -12,7 +18,7 @@ body {
     width: 100%;
     margin: 0px;
     padding: 0px;
-}
+}*/
 #div1 {
     color: #eaeaf4;
     display: flex;
@@ -23,18 +29,18 @@ body {
 }
     nav {
         width: 95%;
-        height: 85%;
+        height: 76%;
         border-bottom: 1px solid #353567;
         margin-left: 5px;
     }
     #menubar-starred-ideas-box {
         border-top: 1px solid #353567;
         border-bottom: 1px solid #353567;
-        height: 30%;
+        height: 20%;
     }
     h3 {
         margin-left: 10px;
-        font-size: 14px;
+        font-size: 12px;
         font-weight: lighter;
     }
 
@@ -45,9 +51,9 @@ body {
         background-color: #d14119;
     }
     ul li {
-        height: 50px;
+        height: 36px;
         width: 100%;
-        margin-left: 10px;
+        margin-left: 20px;
         font-size: 18px;
         list-style: none;
     }
@@ -64,7 +70,7 @@ body {
         font-size: 16px;
         color: #eaeaf3;
         margin-top: 15px;
-        height: 35px;
+        height: 41px;
         border: 2px solid #353567;
         background-color: #5356a4;
         width: 100%;
@@ -74,24 +80,30 @@ body {
     display: flex;
     justify-content: center;
     background-color: #a9aad2;
+    height:46%;
+
 }
     #ideabox-form {
-        font-size: 20px;
-        height: 90%;
-        width: 40%;
+        justify-content: center;
+        display:block;
+        font-size: 16px;
+        height: 61%;
+        width: 36%;
         margin-top: 2%;
+        flex-direction:column;
+        display:flex;
     }
     #ideabox-title-input {
         border: 2px solid #353567;
-        width: 100%;
+        width: 98%;
         height: 35px;
-        margin: 1% 0%;
+        margin:  1% 0%;
     }
     #ideabox-body-input {
         border: 2px solid #353567;
-        width: 100%;
+        width: 98%;
         height: 80px;
-        margin: 1% 0%;
+        margin:  1% 0%;
     }
     #ideabox-save-button {
         color: #ffffff;
@@ -104,6 +116,7 @@ body {
     #ideabox-search-input {
         width: 100%;
         height: 35px;
+        border:1px solid red;
     }
 #div3 {
     display: flex;
