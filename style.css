@@ -45,7 +45,7 @@ body {
     }
 
     #menubar-list {
-        margin-left: -50px;
+        margin-left: 5px;
     }
     ul li:hover {
         background-color: #d14119;
@@ -64,6 +64,7 @@ body {
         height: 35px;
         margin-bottom: 10px;
         margin-left: 3px;
+        resize: none;
         width: 98%;
     }
     .menu-button {
@@ -88,35 +89,39 @@ body {
     #ideabox-form {
         font-size: 20px;
         height: 90%;
-        margin-top: 2%;
+        margin-top: 0.5%;
         width: 40%;
+    }
+    .ideabox-form-label {
+        font-size: 3vh;
     }
     #ideabox-title-input {
         border: 2px solid #353567;
         font-size: 20px;
-        height: 35px;
-        margin: 1% 0%;
-        width: 100%;
+        height: 10%;
+        margin: 3% 0%;
+        width: 98%;
     }
     #ideabox-body-input {
-        font-size: 14px;
         border: 2px solid #353567;
-        resize: none;
-        height: 80px;
+        font-size: 14px;
+        height: 30%;
         margin: 1% 0%;
-        width: 100%;
+        resize: none;
+        width: 98%;
     }
     #ideabox-save-button {
         background-color: #1f1f3d;
         border: 2px solid #353567;
         color: #ffffff;
-        height: 35px;
+        height: 10%;
         margin: 1% 0%;
         width: 100%;
+        margin: 3% 0%;
     }
     #ideabox-search-input {
         border: 2px solid #353567;
-        height: 35px;
+        height: 10%;
         width: 100%;
     }
 
