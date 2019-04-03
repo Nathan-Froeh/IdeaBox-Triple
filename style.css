@@ -119,6 +119,10 @@ body {
         width: 100%;
         margin: 3% 0%;
     }
+    #ideabox-save-button.enable:hover {
+        background: #5356A4;
+        outline: none;
+      }
     #ideabox-search-input {
         border: 2px solid #353567;
         height: 10%;
