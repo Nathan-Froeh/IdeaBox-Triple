@@ -1,3 +1,4 @@
+var ideaStorageArr = JSON.parse(localStorage.getItem('idea')) || [];
 var ideaTitle = document.querySelector('#ideabox-title-input');
 var ideaBody = document.querySelector('#ideabox-body-input');
 var saveButton = document.querySelector('#ideabox-save-button')
@@ -69,29 +70,33 @@ function checkInputFields() {
         genCard(title, body)
         objCreate();
     }
-        var ideaObj;
+
     function objCreate() {    
-        ideaObj = {
+        var ideaObj = {
         title: ideaTitle.value,
         body: ideaBody.value
         }
-        objSave(ideaObj);
+        ideaStorageArr.push(ideaObj);
+        objSave(ideaStorageArr);
+        console.log(ideaStorageArr.length);
     }
 
-    function objSave(ideaObj) {
-        localStorage.setItem('idea', JSON.stringify(ideaObj));
+    function objSave(ideaStorageArr) {
+        localStorage.setItem('idea', JSON.stringify(ideaStorageArr));
         console.log(localStorage.getItem('idea'));
     }
 
     function retrieveIdea() {
         var stuff = localStorage.getItem('idea');
         var parseIdea = JSON.parse(stuff); 
-        var title = parseIdea.title;
-        var body = parseIdea.body;
+        
+        
+        var title = parseIdea[0].title;
+        var body = parseIdea[0].body;
         genCard(title, body);
     }
 
-
+    
 
 
 
