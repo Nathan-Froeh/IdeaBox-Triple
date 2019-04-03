@@ -9,6 +9,9 @@ var addQualityButton = document.querySelector('#addQualityButton');
 var storageBox = document.querySelector('#storage-box')
 
 
+ideaTitle.addEventListener('keyup', checkInputFields)
+ideaBody.addEventListener('keyup', checkInputFields)
+
 /*****************Aside Menu*************/
 
 function titleText(event){
@@ -24,7 +27,6 @@ function ideaText(title){
 }
 
 
-saveButton.addEventListener('click', titleText)
 
 
 
@@ -35,6 +37,15 @@ saveButton.addEventListener('click', titleText)
 
 
 /****************Idea Box*****************/
+function checkInputFields() {
+	if (ideaTitle.value && ideaBody.value !== '') {
+        saveButton.disabled = false;
+        saveButton.classList.add('enable');
+	} else {
+        saveButton.disabled = true;
+        saveButton.classList.remove('enable');
+	}
+}
 
 
 
