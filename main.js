@@ -35,6 +35,17 @@ saveButton.addEventListener('click', titleText)
 
 
 /****************Idea Box*****************/
+saveButton
+
+function checkInputFields() {
+	if (ideaTitle.value && ideaBody.value !== '') {
+		saveButton.classList.add('enable');
+		saveButton.disabled = false;
+	} else {
+		saveButton.classList.remove('enable');
+		saveButton.disabled = true;
+	}
+}
 
 
 
