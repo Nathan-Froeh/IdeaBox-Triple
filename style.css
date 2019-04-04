@@ -4,6 +4,7 @@ HTML {
 }
 * {
     font-family: 'Open sans', sans-serif;
+    box-sizing: border-box;
 }
 body {
     display: grid;
@@ -14,7 +15,12 @@ body {
     padding: 0px;
     width: 100%;
 }
-#div1 {
+
+
+/*Menu Bar Aside*/
+
+#menu-bar {
+
     background-color: #1f1f3d;
     border: 1px solid;
     color: #eaeaf4;
@@ -24,14 +30,14 @@ body {
 }
     nav {
         border-bottom: 1px solid #353567;
-        height: 85%;
+        height: 500px;
         margin-left: 5px;
         width: 95%;
     }
     #menubar-starred-ideas-box {
         border-bottom: 1px solid #353567;
         border-top: 1px solid #353567;
-        height: 30%;
+        height: 115px;
     }
     h3 {
         font-size: 14px;
@@ -40,14 +46,14 @@ body {
     }
 
     #menubar-list {
-        margin-left: -50px;
+        margin-left: 5px;
     }
     ul li:hover {
-        background-color: #d14119;
+         background-color: #d14119;
     }
     ul li {
         font-size: 18px;
-        height: 50px;
+        height: 40px;
         list-style: none;
         margin-left: 10px;
         width: 100%;
@@ -59,6 +65,7 @@ body {
         height: 35px;
         margin-bottom: 10px;
         margin-left: 3px;
+        resize: none;
         width: 98%;
     }
     .menu-button {
@@ -71,7 +78,11 @@ body {
         padding: 0px;
         width: 100%;
     }
-#div2 {
+
+/*Idea Box Section*/
+
+#idea-box {
+
     background-color: #a9aad2;
     display: flex;
     justify-content: center;
@@ -79,40 +90,101 @@ body {
     #ideabox-form {
         font-size: 20px;
         height: 90%;
-        margin-top: 2%;
+        margin-top: 0.5%;
         width: 40%;
+    }
+    .ideabox-form-label {
+        font-size: 3vh;
     }
     #ideabox-title-input {
         border: 2px solid #353567;
         font-size: 20px;
-        height: 35px;
-        margin: 1% 0%;
+        height: 10%;
+        margin: 3% 0%;
         width: 100%;
     }
     #ideabox-body-input {
-        font-size: 14px;
         border: 2px solid #353567;
-        resize: none;
-        height: 80px;
+        font-size: 14px;
+        height: 30%;
         margin: 1% 0%;
+        resize: none;
         width: 100%;
     }
     #ideabox-save-button {
         background-color: #1f1f3d;
         border: 2px solid #353567;
         color: #ffffff;
-        height: 35px;
+        height: 10%;
         margin: 1% 0%;
         width: 100%;
+        margin: 3% 0%;
     }
     #ideabox-search-input {
         border: 2px solid #353567;
-        height: 35px;
+        height: 10%;
         width: 100%;
     }
-#div3 {
-    background-color: #eaeaf4;
+
+/*Storage Box Section*/
+
+#storage-box {
+		padding: 10px;
     display: flex;
     grid-column-end: 3;
-    grid-column-start: 2;
+    background-color: #eaeaf4;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+img{
+	width: 20px;
+}
+
+.idea-card{
+	height: 45%;
+	width: 30%;
+	margin: 10px;
+}
+
+.idea-card-top{
+	height: 20px;
+	width: 100%;
+	background-color: #1f1f3d;
+	display: flex;
+	justify-content: space-between;
+}
+
+article{
+	height: 80%;
+	width: 100%;
+	background-color: #ffffff;
+	display: flex;
+	justify-content: flex-start;
+	flex-wrap: wrap;
+}
+
+h4{
+	width: 100%;
+	height: 12%;
+	margin: 10px;
+}
+
+.idea-card-text{
+	margin: 10px;
+}
+
+.idea-card-bottom{
+	height: 20px;
+	width: 100%;
+	background-color: #5356A4;
+	display: flex;
+	justify-content: space-between;
+}
+
+.quality{
+	width: 60px;
+	margin: 0px;
 }
