@@ -1,3 +1,6 @@
+
+
+var ideaStorageArr = JSON.parse(localStorage.getItem('idea')) || [];
 var ideaTitle = document.querySelector('#ideabox-title-input');
 var ideaBody = document.querySelector('#ideabox-body-input');
 var saveButton = document.querySelector('#ideabox-save-button')
@@ -6,33 +9,16 @@ var ideaSearchButton;
 var starredButton = document.querySelector('#starredButton');
 var qualityInput = document.querySelector('#new-quality-input');
 var addQualityButton = document.querySelector('#addQualityButton');
-var storageBox = document.querySelector('#storage-box')
+var storageBox = document.querySelector('#storage-box');
 
 
+
+window.addEventListener('load', isStorageEmpty);
 ideaTitle.addEventListener('keyup', checkInputFields);
 ideaBody.addEventListener('keyup', checkInputFields);
 saveButton.addEventListener('click', titleText);
 
 /*****************Aside Menu*************/
-
-function titleText(event){
-	event.preventDefault();
-	var title = ideaTitle.value;
-	ideaText(title)
-
-}
-
-function ideaText(title){
-	var text = ideaBody.value;
-	genCard(title, text)
-
-}
-
-
-
-
-
-
 
 
 
@@ -46,8 +32,55 @@ function checkInputFields() {
 	} else {
         saveButton.disabled = true;
         saveButton.classList.remove('enable');
+
 	}
 }
+
+    function titleText(event){
+        event.preventDefault();
+        var title = ideaTitle.value;
+        ideaText(title)
+
+    }
+
+    function ideaText(title){
+        var body = ideaBody.value;
+        retrieveIdea()
+        genCard(title, body)
+        objCreate();
+    }
+    	var ideaObj;
+    function objCreate() {    
+        ideaObj = {
+        title: ideaTitle.value,
+        body: ideaBody.value
+        }
+        ideaStorageArr.push(ideaObj);
+        objSave(ideaStorageArr);
+        console.log(ideaStorageArr.length);
+        console.log(ideaStorageArr);
+    }
+
+    function objSave(ideaStorageArr) {
+        localStorage.setItem('idea', JSON.stringify(ideaStorageArr));
+    }
+        console.log(localStorage.getItem('idea'));
+        console.log(ideaStorageArr);
+
+  function isStorageEmpty(){
+  	if(ideaStorageArr != []){
+  		retrieveIdea()
+  	}
+  }
+
+    function retrieveIdea() {
+        ideaStorageArr.forEach(function(idea){
+        	genCard(idea);
+        });
+    }
+
+    
+
 
 
 
@@ -68,7 +101,7 @@ function checkInputFields() {
 
 /****************Storage Box**********/
 
-function genCard(title, text) {
+function genCard(idea) {
 	var ideaCard = `
 		<div class = 'idea-card'>
             <div class = 'idea-card-top'>
@@ -76,8 +109,8 @@ function genCard(title, text) {
                 <img src = 'Images/delete.svg' id = 'delete'>
             </div>
             <article>
-                <h4 class = 'idea-card-title'>${title}</h4>
-                <p class = 'idea-card-text'>${text}</p>
+                <h4 class = 'idea-card-title'>${idea.title}</h4>
+                <p class = 'idea-card-text'>${idea.body}</p>
             </article>
             <div class = 'idea-card-bottom'>
                 <img src = 'Images/upvote.svg' id = 'upvote-deact'>
