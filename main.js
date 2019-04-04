@@ -9,8 +9,9 @@ var addQualityButton = document.querySelector('#addQualityButton');
 var storageBox = document.querySelector('#storage-box')
 
 
-ideaTitle.addEventListener('keyup', checkInputFields)
-ideaBody.addEventListener('keyup', checkInputFields)
+ideaTitle.addEventListener('keyup', checkInputFields);
+ideaBody.addEventListener('keyup', checkInputFields);
+saveButton.addEventListener('click', titleText);
 
 /*****************Aside Menu*************/
 
@@ -24,6 +25,7 @@ function titleText(event){
 function ideaText(title){
 	var text = ideaBody.value;
 	genCard(title, text)
+
 }
 
 
