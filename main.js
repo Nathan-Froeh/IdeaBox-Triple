@@ -47,22 +47,22 @@ function runIdea(title, body) {
 
 
 function saveToIdea(e){
-	event.preventDefault();
+event.preventDefault();
 var id;
-var title = ideaTitle.value();
-
-var idea = new Idea(title, ideaBody.value)
-//console.log(ideaTitle.value)
-yes();
+var title = ideaTitle.value;
+var body = ideaBody.value;
+var idea = new Idea(title,body);
+ideaStorageArr.push(idea);
+idea.saveToStorage(ideaStorageArr);
 }
 
-function quality(){
+// function quality(){
 
-}
+// }
 
-function deleteButton(){
+// function deleteButton(){
 
-}
+// }
 
 
 

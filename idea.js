@@ -11,19 +11,20 @@ UpdateQuality
 */
 
 class Idea{
-	constructor(title, body){
-		//this.id = id;
-		this.title = title;
-		this.body = body;
-		this.star = false;
-		this.quality = 'Swill';
-		//this.xButton = xButton;
-	}
-}
+  constructor(title, body){
+    //this.id = id;
+    this.title = title;
+    this.body = body;
+    this.star = false;
+    this.quality = 'Swill';
+    //this.xButton = xButton;
+    console.log('Idea Test', this.title, this.body);
+  }
 
-function yes(){
-	console.log(this.title);
-
+  saveToStorage(ideaStorageArr) {
+    console.log('hi');
+    localStorage.setItem('posts', JSON.stringify(ideaStorageArr));
+  }
 }
 
 //console.log(title);
