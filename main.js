@@ -16,7 +16,7 @@ var storageBox = document.querySelector('#storage-box');
 window.addEventListener('load', isStorageEmpty);
 ideaTitle.addEventListener('keyup', checkInputFields);
 ideaBody.addEventListener('keyup', checkInputFields);
-saveButton.addEventListener('click', titleText);
+saveButton.addEventListener('click', objCreate);
 
 /*****************Aside Menu*************/
 
@@ -32,33 +32,19 @@ function checkInputFields() {
 	} else {
         saveButton.disabled = true;
         saveButton.classList.remove('enable');
-
 	}
 }
 
-    function titleText(event){
-        event.preventDefault();
-        var title = ideaTitle.value;
-        ideaText(title)
-
-    }
-
-    function ideaText(title){
-        var body = ideaBody.value;
-        retrieveIdea()
-        genCard(title, body)
-        objCreate();
-    }
     	var ideaObj;
-    function objCreate() {    
+    function objCreate() { 
+    	event.preventDefault();   
         ideaObj = {
         title: ideaTitle.value,
         body: ideaBody.value
         }
         ideaStorageArr.push(ideaObj);
+        genCard(ideaObj)
         objSave(ideaStorageArr);
-        console.log(ideaStorageArr.length);
-        console.log(ideaStorageArr);
     }
 
     function objSave(ideaStorageArr) {
@@ -74,6 +60,7 @@ function checkInputFields() {
   }
 
     function retrieveIdea() {
+    	console.log(ideaStorageArr);
         ideaStorageArr.forEach(function(idea){
         	genCard(idea);
         });
@@ -82,26 +69,10 @@ function checkInputFields() {
     
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /****************Storage Box**********/
 
 function genCard(idea) {
+	console.log(idea);
 	var ideaCard = `
 		<div class = 'idea-card'>
             <div class = 'idea-card-top'>
