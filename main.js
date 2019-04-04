@@ -89,10 +89,9 @@ function checkInputFields() {
     function retrieveIdea() {
         var stuff = localStorage.getItem('idea');
         var parseIdea = JSON.parse(stuff); 
-        
-        
         var title = parseIdea[0].title;
         var body = parseIdea[0].body;
+        ideaStorageArr.forEach(function (genCardtitle, body));
         genCard(title, body);
     }
 
