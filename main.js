@@ -1,8 +1,8 @@
 
 
 var ideaStorageArr = JSON.parse(localStorage.getItem('idea')) || [];
-var ideaTitle = document.querySelector('#ideabox-title-input');
-var ideaBody = document.querySelector('#ideabox-body-input');
+var ideaTitle = document.querySelector("#ideabox-title-input");
+var ideaBody = document.querySelector("#ideabox-body-input");
 var saveButton = document.querySelector('#ideabox-save-button')
 var ideaSearchBox = document.querySelector('#ideabox-search-input');
 var ideaSearchButton;
@@ -10,13 +10,16 @@ var starredButton = document.querySelector('#starredButton');
 var qualityInput = document.querySelector('#new-quality-input');
 var addQualityButton = document.querySelector('#addQualityButton');
 var storageBox = document.querySelector('#storage-box');
-
+var star;
+var qualityUp;
+var qualityDown;
+var deleteButton;
 
 
 window.addEventListener('load', isStorageEmpty);
 ideaTitle.addEventListener('keyup', checkInputFields);
 ideaBody.addEventListener('keyup', checkInputFields);
-saveButton.addEventListener('click', objCreate);
+saveButton.addEventListener('click', saveToIdea);
 
 /*****************Aside Menu*************/
 
@@ -25,6 +28,8 @@ saveButton.addEventListener('click', objCreate);
 
 
 /****************Idea Box*****************/
+
+
 function checkInputFields() {
 	if (ideaTitle.value && ideaBody.value !== '') {
         saveButton.disabled = false;
@@ -34,6 +39,32 @@ function checkInputFields() {
         saveButton.classList.remove('enable');
 	}
 }
+
+function runIdea(title, body) {
+	var title = ideaTitle.value;
+	var body = ideaBody.value;
+}
+
+
+function saveToIdea(e){
+	event.preventDefault();
+var id;
+var title = ideaTitle.value();
+
+var idea = new Idea(title, ideaBody.value)
+//console.log(ideaTitle.value)
+yes();
+}
+
+function quality(){
+
+}
+
+function deleteButton(){
+
+}
+
+
 
     	var ideaObj;
     function objCreate() { 
@@ -50,8 +81,8 @@ function checkInputFields() {
     function objSave(ideaStorageArr) {
         localStorage.setItem('idea', JSON.stringify(ideaStorageArr));
     }
-        console.log(localStorage.getItem('idea'));
-        console.log(ideaStorageArr);
+        //console.log(localStorage.getItem('idea'));
+        //console.log(ideaStorageArr);
 
   function isStorageEmpty(){
   	if(ideaStorageArr != []){
@@ -60,7 +91,7 @@ function checkInputFields() {
   }
 
     function retrieveIdea() {
-    	console.log(ideaStorageArr);
+    	//console.log(ideaStorageArr);
         ideaStorageArr.forEach(function(idea){
         	genCard(idea);
         });
@@ -72,7 +103,7 @@ function checkInputFields() {
 /****************Storage Box**********/
 
 function genCard(idea) {
-	console.log(idea);
+	//console.log(idea);
 	var ideaCard = `
 		<div class = 'idea-card'>
             <div class = 'idea-card-top'>
