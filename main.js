@@ -10,11 +10,12 @@ var starredButton = document.querySelector('#starredButton');
 var qualityInput = document.querySelector('#new-quality-input');
 var addQualityButton = document.querySelector('#addQualityButton');
 var storageBox = document.querySelector('#storage-box');
-var star = document.querySelector('.star');
-var qualityUp = document.querySelector('.upvote-deact');
-var qualityDown = document.querySelector('.downvote-deact');
+var starButton = document.querySelector('.star');
+var qualityUpButton = document.querySelector('.upvote-deact');
+var qualityDownButton = document.querySelector('.downvote-deact');
 var deleteButton = document.querySelector('.delete');
 
+var storageBoxParent = document.querySelector('#storage-box');
 
 window.addEventListener('load', isStorageEmpty);
 ideaTitle.addEventListener('keyup', checkInputFields);
@@ -22,12 +23,40 @@ ideaBody.addEventListener('keyup', checkInputFields);
 saveButton.addEventListener('click', saveToIdea);
 
 
+//find way to get input from the insertAdjacentHTML
+//document.querySelector does not seem to be the right selector
+//look at the event bubbling class we had, this I think is the same thing
+
+storageBoxParent.addEventListener('click', function(event) {
+  if (event.target.className === 'star') {
+    console.log(event.target.parentnode.parentnode.id)
+    console.log('yes')
+  }
+});
 
 
-star.addEventListener('click', star)
+starButton.addEventListener('click', star);
 function star(e){
-	console.log('star')
+event.preventDefault();
+console.log('star')
 }
+qualityUpButton.addEventListener('click', up)
+function up(e){
+	event.preventDefault();
+	console.log('up')
+}
+qualityDownButton.addEventListener('click', down)
+function down(e){
+	event.preventDefault();
+	console.log('down')
+}
+
+deleteButton.addEventListener('click', deleteBtn);
+function deleteBtn(e){
+	event.preventDefault();
+	console.log('delete')
+}
+
 
 /*****************Aside Menu*************/
 
@@ -111,21 +140,21 @@ console.log(id)
 function genCard(idea) {
 	//console.log(idea);
 	var ideaCard = `
-		<div class = 'idea-card'>
+		<article class = 'idea-card' id='${idea.id}'>
             <div class = 'idea-card-top'>
-                <img src = 'Images/star.svg' id = 'star'>
-                <img src = 'Images/delete.svg' id = 'delete'>
+                <input type = 'image' src = 'Images/star.svg' class = 'star' alt = 'star-button'>
+                <input type = 'image' src = 'Images/delete.svg' class = 'delete'>
             </div>
             <article>
                 <h4 class = 'idea-card-title'>${idea.title}</h4>
-                <p class = 'idea-card-text'>${idea.body}</p>
+                <p class = 'idea-card-text'>${idea.body}${idea.id}</p>
             </article>
             <div class = 'idea-card-bottom'>
-                <img src = 'Images/upvote.svg' id = 'upvote-deact'>
+                <input type = 'image' src = 'Images/upvote.svg' class = 'upvote-deact'>
                 <p class = 'quality'>Quality:</p>
-                <img src = 'Images/downvote.svg' id = 'downvote-deact'>
+                <input type = 'image' src = 'Images/downvote.svg' class = 'downvote-deact'>
             </div>
-        </div>
+        </article>
           `
   storageBox.insertAdjacentHTML('afterBegin', ideaCard);
 };
