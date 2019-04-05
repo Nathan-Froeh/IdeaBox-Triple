@@ -29,7 +29,7 @@ saveButton.addEventListener('click', saveToIdea);
 
 storageBoxParent.addEventListener('click', function(event) {
   if (event.target.className === 'star') {
-    console.log(event.target.parentnode.parentnode.id)
+    console.log(event.target.parentNode.parentNode.id)
     console.log('yes')
   }
 });
