@@ -135,6 +135,14 @@ body {
 
 /*Storage Box Section*/
 
+.delete,
+.star,
+.upvote-deact,
+.downvote-deact{
+	width: 20px;
+}
+
+
 #storage-box {
 		padding: 10px;
     display: flex;

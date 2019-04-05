@@ -33,13 +33,6 @@ class Idea{
 
 
 
-// function objSave(ideaStorageArr) {
-// 	console.log('objSave')
-//         localStorage.setItem('idea', JSON.stringify(ideaStorageArr));
-//     }
-
-
-
 function retrieveIdea() {
 			console.log('retreveIdea')
 			console.log(localStorage.getItem('idea'))

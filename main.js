@@ -10,16 +10,24 @@ var starredButton = document.querySelector('#starredButton');
 var qualityInput = document.querySelector('#new-quality-input');
 var addQualityButton = document.querySelector('#addQualityButton');
 var storageBox = document.querySelector('#storage-box');
-var star;
-var qualityUp;
-var qualityDown;
-var deleteButton;
+var star = document.querySelector('.star');
+var qualityUp = document.querySelector('.upvote-deact');
+var qualityDown = document.querySelector('.downvote-deact');
+var deleteButton = document.querySelector('.delete');
 
 
 window.addEventListener('load', isStorageEmpty);
 ideaTitle.addEventListener('keyup', checkInputFields);
 ideaBody.addEventListener('keyup', checkInputFields);
 saveButton.addEventListener('click', saveToIdea);
+
+
+
+
+star.addEventListener('click', star)
+function star(e){
+	console.log('star')
+}
 
 /*****************Aside Menu*************/
 
