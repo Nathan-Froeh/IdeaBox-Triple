@@ -30,32 +30,49 @@ saveButton.addEventListener('click', saveToIdea);
 storageBoxParent.addEventListener('click', function(event) {
   if (event.target.className === 'star') {
     console.log(event.target.parentNode.parentNode.id)
-    console.log('yes')
+    console.log('star')
   }
+
+  if (event.target.className === 'upvote-deact') {
+    console.log(event.target.parentNode.parentNode.id)
+    console.log('up')
+  }
+
+  if (event.target.className === 'downvote-deact') {
+    console.log(event.target.parentNode.parentNode.id)
+    console.log('down')
+  }
+
+  if (event.target.className === 'delete') {
+    console.log(event.target.parentNode.parentNode.id)
+    console.log('delete')
+  }
+
+
 });
 
 
-starButton.addEventListener('click', star);
-function star(e){
-event.preventDefault();
-console.log('star')
-}
-qualityUpButton.addEventListener('click', up)
-function up(e){
-	event.preventDefault();
-	console.log('up')
-}
-qualityDownButton.addEventListener('click', down)
-function down(e){
-	event.preventDefault();
-	console.log('down')
-}
+// starButton.addEventListener('click', star);
+// function star(e){
+// event.preventDefault();
+// console.log('star')
+// }
+// qualityUpButton.addEventListener('click', up)
+// function up(e){
+// 	event.preventDefault();
+// 	console.log('up')
+// }
+// qualityDownButton.addEventListener('click', down)
+// function down(e){
+// 	event.preventDefault();
+// 	console.log('down')
+// }
 
-deleteButton.addEventListener('click', deleteBtn);
-function deleteBtn(e){
-	event.preventDefault();
-	console.log('delete')
-}
+// deleteButton.addEventListener('click', deleteBtn);
+// function deleteBtn(e){
+// 	event.preventDefault();
+// 	console.log('delete')
+// }
 
 
 /*****************Aside Menu*************/
