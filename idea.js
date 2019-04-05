@@ -1,8 +1,5 @@
 /*		MUST HAVE
 
-Idea method
-Constructor
-SaveToStorage
 DeleteFromStorage
 UpdateIdea
 UpdateQuality
@@ -18,31 +15,39 @@ class Idea{
     this.star = false;
     this.quality = 'Swill';
     //this.xButton = xButton;
-    console.log('Idea Test', this.title, this.body);
+    //console.log('Idea Test', this.title, this.body);
   }
 
   saveToStorage(ideaStorageArr) {
-    console.log('hi');
+    console.log('saveToStorage');
     localStorage.setItem('posts', JSON.stringify(ideaStorageArr));
+    console.log(ideaStorageArr)
+    //console.log(idea)
   }
-}
 
-//console.log(title);
-//console.log(`body ${body}`);
-// console.log();
-// console.log();
-// consolelog();
-// consolelog();
-// consolelog();
-// consolelog();
-// consolelog();
+  // DeleteFromStorage(){}
+  // UpdateIdea(){}
+  // UpdateQuality(){}
+};
 
 
 
 
+// function objSave(ideaStorageArr) {
+// 	console.log('objSave')
+//         localStorage.setItem('idea', JSON.stringify(ideaStorageArr));
+//     }
 
 
 
+function retrieveIdea() {
+			console.log('retreveIdea')
+			console.log(localStorage.getItem('idea'))
+    	//console.log(ideaStorageArr);
+        ideaStorageArr.forEach(function(idea){
+        	genCard(idea);
+        });
+    }
 
 
 

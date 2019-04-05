@@ -54,7 +54,16 @@ var body = ideaBody.value;
 var idea = new Idea(title,body);
 ideaStorageArr.push(idea);
 idea.saveToStorage(ideaStorageArr);
+genCard(idea);
 }
+
+  function isStorageEmpty(){
+  	console.log(ideaStorageArr)
+  	if(ideaStorageArr != []){
+  		retrieveIdea()
+  	}
+  }
+
 
 // function quality(){
 
@@ -66,36 +75,31 @@ idea.saveToStorage(ideaStorageArr);
 
 
 
-    	var ideaObj;
-    function objCreate() { 
-    	event.preventDefault();   
-        ideaObj = {
-        title: ideaTitle.value,
-        body: ideaBody.value
-        }
-        ideaStorageArr.push(ideaObj);
-        genCard(ideaObj)
-        objSave(ideaStorageArr);
-    }
+    // 	var ideaObj;
+    // function objCreate() { 
+    // 	event.preventDefault();   
+    //     ideaObj = {
+    //     title: ideaTitle.value,
+    //     body: ideaBody.value
+    //     }
+    //     ideaStorageArr.push(ideaObj);
+    //     genCard(ideaObj)
+    //     objSave(ideaStorageArr);
+    // }
 
-    function objSave(ideaStorageArr) {
-        localStorage.setItem('idea', JSON.stringify(ideaStorageArr));
-    }
+    // function objSave(ideaStorageArr) {
+    //     localStorage.setItem('idea', JSON.stringify(ideaStorageArr));
+    // }
         //console.log(localStorage.getItem('idea'));
         //console.log(ideaStorageArr);
 
-  function isStorageEmpty(){
-  	if(ideaStorageArr != []){
-  		retrieveIdea()
-  	}
-  }
 
-    function retrieveIdea() {
-    	//console.log(ideaStorageArr);
-        ideaStorageArr.forEach(function(idea){
-        	genCard(idea);
-        });
-    }
+    // function retrieveIdea() {
+    // 	//console.log(ideaStorageArr);
+    //     ideaStorageArr.forEach(function(idea){
+    //     	genCard(idea);
+    //     });
+    // }
 
     
 
