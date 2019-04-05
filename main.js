@@ -48,13 +48,14 @@ function runIdea(title, body) {
 
 function saveToIdea(e){
 event.preventDefault();
-var id;
+var id = Date.now();
 var title = ideaTitle.value;
 var body = ideaBody.value;
-var idea = new Idea(title,body);
+var idea = new Idea(title,body,id);
 ideaStorageArr.push(idea);
 idea.saveToStorage(ideaStorageArr);
 genCard(idea);
+console.log(id)
 }
 
   function isStorageEmpty(){
@@ -65,13 +66,6 @@ genCard(idea);
   }
 
 
-// function quality(){
-
-// }
-
-// function deleteButton(){
-
-// }
 
 
 

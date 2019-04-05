@@ -8,8 +8,8 @@ UpdateQuality
 */
 
 class Idea{
-  constructor(title, body){
-    //this.id = id;
+  constructor(title, body,id){
+    this.id = id;
     this.title = title;
     this.body = body;
     this.star = false;
@@ -20,7 +20,7 @@ class Idea{
 
   saveToStorage(ideaStorageArr) {
     console.log('saveToStorage');
-    localStorage.setItem('posts', JSON.stringify(ideaStorageArr));
+    localStorage.setItem('idea', JSON.stringify(ideaStorageArr));
     console.log(ideaStorageArr)
     //console.log(idea)
   }
