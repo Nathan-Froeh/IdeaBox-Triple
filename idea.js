@@ -19,28 +19,38 @@ class Idea{
   }
 
   saveToStorage(ideaStorageArr) {
-    console.log('saveToStorage');
     localStorage.setItem('idea', JSON.stringify(ideaStorageArr));
-    console.log(ideaStorageArr)
     //console.log(idea)
   }
-
+  deleteFromStorage(ideaStorageArr) {
+    // localStorage.setItem('idea', JSON.stringify(ideaStorageArr));
+    console.log('deleteFromStorage')
+  }
   // DeleteFromStorage(){}
   // UpdateIdea(){}
   // UpdateQuality(){}
 };
 
 
-
+// function pageLoadFunctions() {
+  
+//   getOldIdeas();
+// }
 
 function retrieveIdea() {
-			console.log('retreveIdea')
-			console.log(localStorage.getItem('idea'))
-    	//console.log(ideaStorageArr);
         ideaStorageArr.forEach(function(idea){
         	genCard(idea);
         });
     }
+
+// function getOldIdeas(ideaStorageArr) {
+  // for (i = 0; i < ideaStorageArr.length; i++) {
+  //   var sameIdea = new Idea(ideaStorageArr[i].title, ideaStorageArr[i].body, ideaStorageArr[i].id, ideaStorageArr[i].quality);
+  //   ideaStorageArr.push(sameIdea);
+  //   console.log('SUP')
+  // }
+// }
+
 
 
 
