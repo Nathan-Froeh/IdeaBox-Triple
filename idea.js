@@ -24,7 +24,7 @@ class Idea{
   }
   deleteFromStorage(ideaStorageArr) {
     // localStorage.setItem('idea', JSON.stringify(ideaStorageArr));
-    console.log('SHITTTTOOOOT')
+    console.log('deleteFromStorage')
   }
   // DeleteFromStorage(){}
   // UpdateIdea(){}
