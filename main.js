@@ -43,35 +43,59 @@ storageBoxParent.addEventListener('click', function(event) {
     console.log('down')
   }
 
-  if (event.target.className === 'delete') {
-    console.log(event.target.parentNode.parentNode.id)
-    console.log('delete')
+  // if (event.target.className === 'delete') {
+  //   console.log(event.target.parentNode.parentNode.id)
+  //   console.log('delete')
+  // }
+
+  if (event.target.className === 'delete') {  
+      var cardId = event.target.parentNode.parentNode.id;
+      
+      //event.target.parentElement.parentElement.remove();
+      //console.log(event.target.parentElement.parentElement.id);
+      newIdea.deleteFromStorage();
+      //findDelete(cardId);
+      
   }
+
+  //parse the idea
+  // use .find to get the object within the array matching the id given
 
 
 });
 
 
-// starButton.addEventListener('click', star);
-// function star(e){
-// event.preventDefault();
-// console.log('star')
-// }
-// qualityUpButton.addEventListener('click', up)
-// function up(e){
-// 	event.preventDefault();
-// 	console.log('up')
-// }
-// qualityDownButton.addEventListener('click', down)
-// function down(e){
-// 	event.preventDefault();
-// 	console.log('down')
+// var myIdeas = JSON.parse(localStorage.getItem('idea'));
+
+// function findDelete(cardId){
+// 		console.log(ideaStorageArr);
+// 	var result = ideaStorageArr.filter(function(matchingIdea){
+// 		if(matchingIdea.id === parseInt(cardId)){
+// 			console.log( 'TEST RESULT',cardId)
+
+// 		return cardId;
+// 		}
+// 	});
+// 	newIdea.deleteFromStorage(cardId)
+
 // }
 
-// deleteButton.addEventListener('click', deleteBtn);
-// function deleteBtn(e){
-// 	event.preventDefault();
-// 	console.log('delete')
+// function findDelete(cardId) {
+// 	var thisIdea = localStorage.getItem('idea');
+//   var owners = cardId.filter(function(cardId) {
+//     return cardId.is === 'owner';
+//   });
+// }
+
+
+// function findDelete(cardId){
+//   var lunch =cardId.map(x => x.id)
+//   for (var i = 0; i < cardId.length; i++){
+//     if(lunch[i] === true){
+//       var myLunch = cardId[i]
+//     	console.log(myLunch)
+//     }
+//   }
 // }
 
 
@@ -105,15 +129,17 @@ event.preventDefault();
 var id = Date.now();
 var title = ideaTitle.value;
 var body = ideaBody.value;
-var idea = new Idea(title,body,id);
-ideaStorageArr.push(idea);
-idea.saveToStorage(ideaStorageArr);
-genCard(idea);
-console.log(id)
+var newIdea = new Idea(title,body,id);
+ideaStorageArr.push(newIdea);
+newIdea.saveToStorage(ideaStorageArr);
+genCard(newIdea);
+// console.log(id)
+// console.log(idea)
+// console.log(ideaStorageArr)
 }
 
   function isStorageEmpty(){
-  	console.log(ideaStorageArr)
+  	//console.log(ideaStorageArr)
   	if(ideaStorageArr != []){
   		retrieveIdea()
   	}
@@ -134,37 +160,21 @@ console.log(id)
     //     genCard(ideaObj)
     //     objSave(ideaStorageArr);
     // }
-
-    // function objSave(ideaStorageArr) {
-    //     localStorage.setItem('idea', JSON.stringify(ideaStorageArr));
-    // }
-        //console.log(localStorage.getItem('idea'));
-        //console.log(ideaStorageArr);
-
-
-    // function retrieveIdea() {
-    // 	//console.log(ideaStorageArr);
-    //     ideaStorageArr.forEach(function(idea){
-    //     	genCard(idea);
-    //     });
-    // }
-
     
 
 
 /****************Storage Box**********/
 
-function genCard(idea) {
-	//console.log(idea);
+function genCard(newIdea) {
 	var ideaCard = `
-		<article class = 'idea-card' id='${idea.id}'>
+		<article class = 'idea-card' id='${newIdea.id}'>
             <div class = 'idea-card-top'>
                 <input type = 'image' src = 'Images/star.svg' class = 'star' alt = 'star-button'>
                 <input type = 'image' src = 'Images/delete.svg' class = 'delete'>
             </div>
             <article>
-                <h4 class = 'idea-card-title'>${idea.title}</h4>
-                <p class = 'idea-card-text'>${idea.body}${idea.id}</p>
+                <h4 class = 'idea-card-title'>${newIdea.title}</h4>
+                <p class = 'idea-card-text'>${newIdea.body}${newIdea.id}</p>
             </article>
             <div class = 'idea-card-bottom'>
                 <input type = 'image' src = 'Images/upvote.svg' class = 'upvote-deact'>
