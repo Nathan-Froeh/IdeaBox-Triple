@@ -12,7 +12,6 @@ var starButton = document.querySelector('.star');
 var qualityUpButton = document.querySelector('.upvote-deact');
 var qualityDownButton = document.querySelector('.downvote-deact');
 var deleteButton = document.querySelector('.delete');
-var initialPrompt = document.querySelector('.initial-prompt')
 
 var storageBoxParent = document.querySelector('#storage-box');
 
@@ -23,10 +22,12 @@ saveButton.addEventListener('click', saveToIdea);
 
 /*****************Aside Menu*************/
 
-
+//combine into 1 eventListener
 storageBoxParent.addEventListener('click', function(event) {
   if (event.target.className === 'star') {
     console.log(event.target.parentNode.parentNode.id)
+    //console.log(event)
+    updateStar(event);
     updateIdeaArray(event)
   }
   if (event.target.className === 'delete') {
@@ -42,65 +43,72 @@ storageBoxParent.addEventListener('click', function(event) {
   if (event.target.className === 'downvote-deact') {
     console.log('down')
   }
-
-  if (event.target.className === 'delete') {
-    // console.log(event.target.parentNode.parentNode.id)
-    deleteIdea(event);
-  }
-
-
 });
 
-function saveToIdea(e){
+function saveToIdea(e,star){
   event.preventDefault();
   var title = ideaTitle.value;
   var body = ideaBody.value;
   var id = Date.now();
-  var idea = new Idea(title,body,id);
+  var idea = new Idea(title,body,id,star);
   ideaStorageArr.push(idea);
   console.log(ideaStorageArr);
   idea.saveToStorage(ideaStorageArr);
   genCard(idea);
-  console.log(ideaStorageArr)
   }
 
-function deleteIdea(e) {
+function makeDeleteArray(e){
   var tempArr = [];
-  var cardId = parseInt(e.target.closest('.idea-card').id);
   var localArr = JSON.parse(localStorage.getItem('idea'));
-  event.target.closest('.idea-card').remove();
   for (i = 0; i < ideaStorageArr.length; i++) {
-    var sameIdea = new Idea(ideaStorageArr[i].title, ideaStorageArr[i].body, ideaStorageArr[i].id, ideaStorageArr[i].quality);
+    var sameIdea = new Idea(ideaStorageArr[i].title, ideaStorageArr[i].body,
+    ideaStorageArr[i].id, ideaStorageArr[i].quality, ideaStorageArr[i].star);
     tempArr.push(sameIdea);
   }
+  launchDeleteIdea(tempArr, localArr, e)
+}
+
+function launchDeleteIdea(tempArr, localArr, e) {
+  var cardId = parseInt(e.target.closest('.idea-card').id);
   var ideaIndex = localArr.find(function (index){
     return index.id == cardId;
   });
   var indexNumber = localArr.indexOf(ideaIndex);
-  tempArr[indexNumber].deleteFromStorage();
+  tempArr[indexNumber].deleteFromStorage(indexNumber);
 } 
-// function reassignment(whatever) {
-//   var secondArr = [];
-//   console.log(ideaStorageArr);
-//   ideaStorageArr.splice(whatever, 1);
-//   ideaStorageArr.forEach(function (element) {
-//     var oldIdeas = new Idea(element.title, element.body, element.id);
-//     secondArr.push(oldIdeas);
-//   })
-//   localStorage.setItem('idea', JSON.stringify(secondArr));
-// }
 
-/*****************Aside Menu*************/
+function updateStar(e){
+  console.log(e.target.src)
+  if (e.target.src.match("Images/star.svg")) {
+     e.target.src = "Images/star-active.svg";
+     var star = true
+   }else {
+    e.target.src = "Images/star.svg";
+    star = false
+  }
+  updateIdeaArray(e, star)
+}
 
-function launchUpdateIdea(tempArr, localArr, e){
+function updateIdeaArray(e, star){
+  var tempArr = [];
+  var localArr = JSON.parse(localStorage.getItem('idea'));
+  for (i = 0; i < ideaStorageArr.length; i++) {
+    var sameIdea = new Idea(ideaStorageArr[i].title, ideaStorageArr[i].body,
+    ideaStorageArr[i].id, ideaStorageArr[i].quality, ideaStorageArr[i].star);
+    tempArr.push(sameIdea);
+  }
+  launchUpdateIdea(tempArr, localArr, e, star)
+}
+
+function launchUpdateIdea(tempArr, localArr, e, star){
   var cardId = parseInt(e.target.closest('.idea-card').id);
   var ideaIndex = localArr.find(function (index){
     return index.id == cardId;
   });
   var indexNumber = localArr.indexOf(ideaIndex);
   tempArr[indexNumber].UpdateIdea(indexNumber);
+  //saveToIdea(e, star)
 }
-
 
 
 
@@ -139,21 +147,21 @@ function isStorageEmpty(){
 }
 
 
+  //getAttribute('src')
+  //setAttribute('src', star-active.svg)
+
+
 /****************Storage Box**********/
-// function togglePrompt(newIdea) {
-//   console.log(ideaStorageArr);
-//   if (ideaStorageArr.length === 0) {
-//     console.log('do it!')
-//     var prompt =
-//     `<article id="empty-storage-prompt">
-//       <h2>Have a good idea?  Let me keep track of it for you!</h2>
-//     </article>`
-//     storageBox.insertAdjacentHTML('afterBegin', prompt)
-//   }
-// }
+function togglePrompt() {
+  console.log(ideaStorageArr.length);
+  if (ideaStorageArr.length > 0) {
+    initialPrompt.classList.add('hidden')
+  } else if (ideaStorageArr.length === 0) {
+    initialPrompt.classList.remove('hidden')
+  }
+}
 
 function genCard(newIdea) {
-  initialPrompt.classList.add('hide-prompt')
 	var ideaCard = `
 		<article class = 'idea-card' id='${newIdea.id}'>
             <div class = 'idea-card-top'>
@@ -173,7 +181,4 @@ function genCard(newIdea) {
           `
   storageBox.insertAdjacentHTML('afterBegin', ideaCard);
 };
-
-
-
 
