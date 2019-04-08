@@ -12,6 +12,7 @@ var starButton = document.querySelector('.star');
 var qualityUpButton = document.querySelector('.upvote-deact');
 var qualityDownButton = document.querySelector('.downvote-deact');
 var deleteButton = document.querySelector('.delete');
+var initialPrompt = document.querySelector('.initial-prompt');
 
 var storageBoxParent = document.querySelector('#storage-box');
 
