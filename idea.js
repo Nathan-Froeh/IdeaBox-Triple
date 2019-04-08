@@ -1,10 +1,6 @@
 /*		MUST HAVE
-
-DeleteFromStorage
 UpdateIdea
 UpdateQuality
-
-
 */
 
 class Idea{
@@ -24,6 +20,7 @@ class Idea{
   }
   deleteFromStorage(ideaStorageArr) {
     // localStorage.setItem('idea', JSON.stringify(ideaStorageArr));
+    togglePrompt();
     console.log('deleteFromStorage')
   }
   // DeleteFromStorage(){}

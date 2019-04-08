@@ -1,5 +1,3 @@
-
-
 var ideaStorageArr = JSON.parse(localStorage.getItem('idea')) || [];
 var ideaTitle = document.querySelector("#ideabox-title-input");
 var ideaBody = document.querySelector("#ideabox-body-input");
@@ -22,24 +20,25 @@ ideaTitle.addEventListener('keyup', checkInputFields);
 ideaBody.addEventListener('keyup', checkInputFields);
 saveButton.addEventListener('click', saveToIdea);
 
+/*****************Aside Menu*************/
 
-//find way to get input from the insertAdjacentHTML
-//document.querySelector does not seem to be the right selector
-//look at the event bubbling class we had, this I think is the same thing
 
 storageBoxParent.addEventListener('click', function(event) {
   if (event.target.className === 'star') {
     console.log(event.target.parentNode.parentNode.id)
-    console.log('star')
+    updateIdeaArray(event)
   }
+  if (event.target.className === 'delete') {
+    event.target.closest('.idea-card').remove();
+    makeDeleteArray(event);
+  }
+});
 
+  storageBoxParent.addEventListener('click', function(event) {
   if (event.target.className === 'upvote-deact') {
-    console.log(event.target.parentNode.parentNode.id)
     console.log('up')
   }
-
   if (event.target.className === 'downvote-deact') {
-    console.log(event.target.parentNode.parentNode.id)
     console.log('down')
   }
 
@@ -92,6 +91,14 @@ function deleteIdea(e) {
 
 /*****************Aside Menu*************/
 
+function launchUpdateIdea(tempArr, localArr, e){
+  var cardId = parseInt(e.target.closest('.idea-card').id);
+  var ideaIndex = localArr.find(function (index){
+    return index.id == cardId;
+  });
+  var indexNumber = localArr.indexOf(ideaIndex);
+  tempArr[indexNumber].UpdateIdea(indexNumber);
+}
 
 
 
@@ -131,22 +138,29 @@ function isStorageEmpty(){
 }
 
 
-    
-
-
 /****************Storage Box**********/
+function togglePrompt(newIdea) {
+  console.log(ideaStorageArr);
+  if (ideaStorageArr.length === 0) {
+    console.log('do it!')
+    var prompt =
+    `<article id="empty-storage-prompt">
+      <h2>Have a good idea?  Let me keep track of it for you!</h2>
+    </article>`
+    storageBox.insertAdjacentHTML('afterBegin', prompt)
+  }
+}
 
-function genCard(idea) {
-	//console.log(idea);
+function genCard(newIdea) {
 	var ideaCard = `
-		<article class = 'idea-card' id='${idea.id}'>
+		<article class = 'idea-card' id='${newIdea.id}'>
             <div class = 'idea-card-top'>
                 <input type = 'image' src = 'Images/star.svg' class = 'star' alt = 'star-button'>
                 <input type = 'image' src = 'Images/delete.svg' class = 'delete'>
             </div>
             <article>
-                <h4 class = 'idea-card-title'>${idea.title}</h4>
-                <p class = 'idea-card-text'>${idea.body}${idea.id}</p>
+                <h4 class = 'idea-card-title'>${newIdea.title}</h4>
+                <p class = 'idea-card-text'>${newIdea.body}${newIdea.id}</p>
             </article>
             <div class = 'idea-card-bottom'>
                 <input type = 'image' src = 'Images/upvote.svg' class = 'upvote-deact'>
