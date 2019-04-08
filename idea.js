@@ -1,10 +1,6 @@
 /*		MUST HAVE
-
-DeleteFromStorage
 UpdateIdea
 UpdateQuality
-
-
 */
 
 class Idea{
@@ -19,38 +15,35 @@ class Idea{
   }
 
   saveToStorage(ideaStorageArr) {
-    console.log('saveToStorage');
     localStorage.setItem('idea', JSON.stringify(ideaStorageArr));
     console.log(ideaStorageArr)
-    //console.log(idea)
+  }
+  deleteFromStorage(index) {
+    console.log(ideaStorageArr)
+    console.log('Index ! ', index)
+    ideaStorageArr.splice(index, 1)
+    this.saveToStorage(ideaStorageArr)
   }
 
-  deleteFromStorage(cardId) {
-    console.log('result');
-    var matchingId = this.filter(function(id) {
-      this.slice(event.target.parentNode.parentNode.id);
-      return this.id === event.target.parentNode.parentNode.id;
-    });
-  }
-
-  // DeleteFromStorage(){}
   // UpdateIdea(){}
   // UpdateQuality(){}
 };
 
 
-
-
 function retrieveIdea() {
-			console.log('retreveIdea')
-			console.log(localStorage.getItem('idea'))
-			console.log(JSON.parse(localStorage.getItem('idea')))
-
-    	//console.log(ideaStorageArr);
         ideaStorageArr.forEach(function(idea){
         	genCard(idea);
         });
     }
+
+// function getOldIdeas(ideaStorageArr) {
+  // for (i = 0; i < ideaStorageArr.length; i++) {
+  //   var sameIdea = new Idea(ideaStorageArr[i].title, ideaStorageArr[i].body, ideaStorageArr[i].id, ideaStorageArr[i].quality);
+  //   ideaStorageArr.push(sameIdea);
+  //   console.log('SUP')
+  // }
+// }
+
 
 
 
