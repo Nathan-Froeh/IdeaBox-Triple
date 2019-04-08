@@ -1,5 +1,3 @@
-
-
 var ideaStorageArr = JSON.parse(localStorage.getItem('idea')) || [];
 var ideaTitle = document.querySelector("#ideabox-title-input");
 var ideaBody = document.querySelector("#ideabox-body-input");
@@ -22,33 +20,27 @@ ideaTitle.addEventListener('keyup', checkInputFields);
 ideaBody.addEventListener('keyup', checkInputFields);
 saveButton.addEventListener('click', saveToIdea);
 
+/*****************Aside Menu*************/
 
-//find way to get input from the insertAdjacentHTML
-//document.querySelector does not seem to be the right selector
-//look at the event bubbling class we had, this I think is the same thing
 
 storageBoxParent.addEventListener('click', function(event) {
   if (event.target.className === 'star') {
     console.log(event.target.parentNode.parentNode.id)
-    console.log('star')
+    updateIdeaArray(event)
   }
+  if (event.target.className === 'delete') {
+    event.target.closest('.idea-card').remove();
+    makeDeleteArray(event);
+  }
+});
 
+  storageBoxParent.addEventListener('click', function(event) {
   if (event.target.className === 'upvote-deact') {
-    console.log(event.target.parentNode.parentNode.id)
     console.log('up')
   }
-
   if (event.target.className === 'downvote-deact') {
-    console.log(event.target.parentNode.parentNode.id)
     console.log('down')
   }
-
-  if (event.target.className === 'delete') {
-    // console.log(event.target.parentNode.parentNode.id)
-    deleteIdea(event);
-  }
-
-
 });
 
 function saveToIdea(e){
@@ -61,37 +53,46 @@ function saveToIdea(e){
   console.log(ideaStorageArr);
   idea.saveToStorage(ideaStorageArr);
   genCard(idea);
-  console.log(ideaStorageArr)
   }
 
-function deleteIdea(e) {
+function makeDeleteArray(e){
   var tempArr = [];
-  var cardId = parseInt(e.target.closest('.idea-card').id);
   var localArr = JSON.parse(localStorage.getItem('idea'));
-  event.target.closest('.idea-card').remove();
   for (i = 0; i < ideaStorageArr.length; i++) {
-    var sameIdea = new Idea(ideaStorageArr[i].title, ideaStorageArr[i].body, ideaStorageArr[i].id, ideaStorageArr[i].quality);
+    var sameIdea = new Idea(ideaStorageArr[i].title, ideaStorageArr[i].body,
+    ideaStorageArr[i].id, ideaStorageArr[i].quality, ideaStorageArr[i].star);
     tempArr.push(sameIdea);
   }
+  launchDeleteIdea(tempArr, localArr, e)
+}
+
+function launchDeleteIdea(tempArr, localArr, e) {
+  var cardId = parseInt(e.target.closest('.idea-card').id);
   var ideaIndex = localArr.find(function (index){
     return index.id == cardId;
   });
   var indexNumber = localArr.indexOf(ideaIndex);
-  tempArr[indexNumber].deleteFromStorage();
+  tempArr[indexNumber].deleteFromStorage(indexNumber);
 } 
-// function reassignment(whatever) {
-//   var secondArr = [];
-//   console.log(ideaStorageArr);
-//   ideaStorageArr.splice(whatever, 1);
-//   ideaStorageArr.forEach(function (element) {
-//     var oldIdeas = new Idea(element.title, element.body, element.id);
-//     secondArr.push(oldIdeas);
-//   })
-//   localStorage.setItem('idea', JSON.stringify(secondArr));
-// }
 
-/*****************Aside Menu*************/
-
+function updateIdeaArray(e){
+  var tempArr = [];
+  var localArr = JSON.parse(localStorage.getItem('idea'));
+  for (i = 0; i < ideaStorageArr.length; i++) {
+    var sameIdea = new Idea(ideaStorageArr[i].title, ideaStorageArr[i].body,
+    ideaStorageArr[i].id, ideaStorageArr[i].quality, ideaStorageArr[i].star);
+    tempArr.push(sameIdea);
+  }
+  launchUpdateIdea(tempArr, localArr, e)
+}
+function launchUpdateIdea(tempArr, localArr, e){
+  var cardId = parseInt(e.target.closest('.idea-card').id);
+  var ideaIndex = localArr.find(function (index){
+    return index.id == cardId;
+  });
+  var indexNumber = localArr.indexOf(ideaIndex);
+  tempArr[indexNumber].UpdateIdea(indexNumber);
+}
 
 
 
@@ -136,17 +137,16 @@ function isStorageEmpty(){
 
 /****************Storage Box**********/
 
-function genCard(idea) {
-	//console.log(idea);
+function genCard(newIdea) {
 	var ideaCard = `
-		<article class = 'idea-card' id='${idea.id}'>
+		<article class = 'idea-card' id='${newIdea.id}'>
             <div class = 'idea-card-top'>
                 <input type = 'image' src = 'Images/star.svg' class = 'star' alt = 'star-button'>
                 <input type = 'image' src = 'Images/delete.svg' class = 'delete'>
             </div>
             <article>
-                <h4 class = 'idea-card-title'>${idea.title}</h4>
-                <p class = 'idea-card-text'>${idea.body}${idea.id}</p>
+                <h4 class = 'idea-card-title'>${newIdea.title}</h4>
+                <p class = 'idea-card-text'>${newIdea.body}${newIdea.id}</p>
             </article>
             <div class = 'idea-card-bottom'>
                 <input type = 'image' src = 'Images/upvote.svg' class = 'upvote-deact'>

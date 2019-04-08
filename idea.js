@@ -1,10 +1,6 @@
 /*		MUST HAVE
-
-DeleteFromStorage
 UpdateIdea
 UpdateQuality
-
-
 */
 
 class Idea{
@@ -20,22 +16,26 @@ class Idea{
 
   saveToStorage(ideaStorageArr) {
     localStorage.setItem('idea', JSON.stringify(ideaStorageArr));
-    //console.log(idea)
+    console.log(ideaStorageArr)
   }
-  deleteFromStorage(ideaStorageArr) {
-    // localStorage.setItem('idea', JSON.stringify(ideaStorageArr));
-    console.log('deleteFromStorage')
+  deleteFromStorage(index) {
+    console.log(ideaStorageArr)
+    console.log('Index ! ', index)
+    ideaStorageArr.splice(index, 1)
+    this.saveToStorage(ideaStorageArr)
   }
-  // DeleteFromStorage(){}
-  // UpdateIdea(){}
+
+   UpdateIdea(index){
+    console.group(index)
+    // recognize star or text update
+    // update storage
+   }
+
+
   // UpdateQuality(){}
 };
-
-
-// function pageLoadFunctions() {
-  
-//   getOldIdeas();
-// }
+    
+  }
 
 function retrieveIdea() {
         ideaStorageArr.forEach(function(idea){
