@@ -1,5 +1,3 @@
-
-
 var ideaStorageArr = JSON.parse(localStorage.getItem('idea')) || [];
 var ideaTitle = document.querySelector("#ideabox-title-input");
 var ideaBody = document.querySelector("#ideabox-body-input");
@@ -87,7 +85,6 @@ function updateIdeaArray(e){
   }
   launchUpdateIdea(tempArr, localArr, e)
 }
-
 function launchUpdateIdea(tempArr, localArr, e){
   var cardId = parseInt(e.target.closest('.idea-card').id);
   var ideaIndex = localArr.find(function (index){

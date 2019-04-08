@@ -34,7 +34,8 @@ class Idea{
 
   // UpdateQuality(){}
 };
-
+    
+  }
 
 function retrieveIdea() {
         ideaStorageArr.forEach(function(idea){
