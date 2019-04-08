@@ -25,7 +25,13 @@ class Idea{
     this.saveToStorage(ideaStorageArr)
   }
 
-  // UpdateIdea(){}
+   UpdateIdea(index){
+    console.group(index)
+    // recognize star or text update
+    // update storage
+   }
+
+
   // UpdateQuality(){}
 };
 

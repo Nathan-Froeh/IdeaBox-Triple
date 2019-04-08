@@ -22,36 +22,27 @@ ideaTitle.addEventListener('keyup', checkInputFields);
 ideaBody.addEventListener('keyup', checkInputFields);
 saveButton.addEventListener('click', saveToIdea);
 
+/*****************Aside Menu*************/
 
-//find way to get input from the insertAdjacentHTML
-//document.querySelector does not seem to be the right selector
-//look at the event bubbling class we had, this I think is the same thing
 
 storageBoxParent.addEventListener('click', function(event) {
   if (event.target.className === 'star') {
     console.log(event.target.parentNode.parentNode.id)
-    console.log('star')
+    updateIdeaArray(event)
   }
+  if (event.target.className === 'delete') {
+    event.target.closest('.idea-card').remove();
+    makeDeleteArray(event);
+  }
+});
 
+  storageBoxParent.addEventListener('click', function(event) {
   if (event.target.className === 'upvote-deact') {
-    console.log(event.target.parentNode.parentNode.id)
     console.log('up')
   }
-
   if (event.target.className === 'downvote-deact') {
-    console.log(event.target.parentNode.parentNode.id)
     console.log('down')
   }
-
-  if (event.target.className === 'delete') {
-    // console.log(event.target.parentNode.parentNode.id)
-    deleteIdea(event);
-  }
-
-  //parse the idea
-  // use .find to get the object within the array matching the id given
-
-
 });
 
 function saveToIdea(e){
@@ -64,47 +55,47 @@ function saveToIdea(e){
   console.log(ideaStorageArr);
   idea.saveToStorage(ideaStorageArr);
   genCard(idea);
-  //console.log('1 ' + ideaStorageArr)
   }
 
-// function makeTempArray(e){
-//   var tempArr = [];
-//   var cardId = parseInt(e.target.closest('.idea-card').id);
-//   var localArr = JSON.parse(localStorage.getItem('idea'));
-//   for (i = 0; i < ideaStorageArr.length; i++) {
-//     var sameIdea = new Idea(ideaStorageArr[i].title, ideaStorageArr[i].body, ideaStorageArr[i].id, ideaStorageArr[i].quality);
-//     tempArr.push(sameIdea);
-//   }
-// }
-
-function deleteIdea(e) {
-  event.target.closest('.idea-card').remove();
+function makeDeleteArray(e){
   var tempArr = [];
-  var cardId = parseInt(e.target.closest('.idea-card').id);
   var localArr = JSON.parse(localStorage.getItem('idea'));
   for (i = 0; i < ideaStorageArr.length; i++) {
-    var sameIdea = new Idea(ideaStorageArr[i].title, ideaStorageArr[i].body, ideaStorageArr[i].id, ideaStorageArr[i].quality);
+    var sameIdea = new Idea(ideaStorageArr[i].title, ideaStorageArr[i].body,
+    ideaStorageArr[i].id, ideaStorageArr[i].quality, ideaStorageArr[i].star);
     tempArr.push(sameIdea);
   }
+  launchDeleteIdea(tempArr, localArr, e)
+}
+
+function launchDeleteIdea(tempArr, localArr, e) {
+  var cardId = parseInt(e.target.closest('.idea-card').id);
   var ideaIndex = localArr.find(function (index){
     return index.id == cardId;
   });
   var indexNumber = localArr.indexOf(ideaIndex);
   tempArr[indexNumber].deleteFromStorage(indexNumber);
 } 
-// function reassignment(whatever) {
-//   var secondArr = [];
-//   console.log(ideaStorageArr);
-//   ideaStorageArr.splice(whatever, 1);
-//   ideaStorageArr.forEach(function (element) {
-//     var oldIdeas = new Idea(element.title, element.body, element.id);
-//     secondArr.push(oldIdeas);
-//   })
-//   localStorage.setItem('idea', JSON.stringify(secondArr));
-// }
 
-/*****************Aside Menu*************/
+function updateIdeaArray(e){
+  var tempArr = [];
+  var localArr = JSON.parse(localStorage.getItem('idea'));
+  for (i = 0; i < ideaStorageArr.length; i++) {
+    var sameIdea = new Idea(ideaStorageArr[i].title, ideaStorageArr[i].body,
+    ideaStorageArr[i].id, ideaStorageArr[i].quality, ideaStorageArr[i].star);
+    tempArr.push(sameIdea);
+  }
+  launchUpdateIdea(tempArr, localArr, e)
+}
 
+function launchUpdateIdea(tempArr, localArr, e){
+  var cardId = parseInt(e.target.closest('.idea-card').id);
+  var ideaIndex = localArr.find(function (index){
+    return index.id == cardId;
+  });
+  var indexNumber = localArr.indexOf(ideaIndex);
+  tempArr[indexNumber].UpdateIdea(indexNumber);
+}
 
 
 
