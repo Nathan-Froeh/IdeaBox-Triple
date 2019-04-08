@@ -4,11 +4,11 @@ UpdateQuality
 */
 
 class Idea{
-  constructor(title, body,id){
+  constructor(title, body,id, star){
     this.id = id;
     this.title = title;
     this.body = body;
-    this.star = false;
+    this.star = star || false;
     this.quality = 'Swill';
     //this.xButton = xButton;
     //console.log('Idea Test', this.title, this.body);
@@ -30,6 +30,10 @@ class Idea{
     // recognize star or text update
     // update storage
    }
+
+   //after star click, see what star is true or false
+   //toggle star image
+   //send true or false 
 
 
   // UpdateQuality(){}
