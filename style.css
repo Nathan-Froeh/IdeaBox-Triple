@@ -153,6 +153,9 @@ body {
     align-items: flex-start;
     flex-wrap: wrap;
 }
+.hide-prompt {
+    display: none;
+}
 
 img{
 	width: 20px;

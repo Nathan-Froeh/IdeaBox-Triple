@@ -12,6 +12,7 @@ var starButton = document.querySelector('.star');
 var qualityUpButton = document.querySelector('.upvote-deact');
 var qualityDownButton = document.querySelector('.downvote-deact');
 var deleteButton = document.querySelector('.delete');
+var initialPrompt = document.querySelector('.initial-prompt')
 
 var storageBoxParent = document.querySelector('#storage-box');
 
@@ -139,19 +140,20 @@ function isStorageEmpty(){
 
 
 /****************Storage Box**********/
-function togglePrompt(newIdea) {
-  console.log(ideaStorageArr);
-  if (ideaStorageArr.length === 0) {
-    console.log('do it!')
-    var prompt =
-    `<article id="empty-storage-prompt">
-      <h2>Have a good idea?  Let me keep track of it for you!</h2>
-    </article>`
-    storageBox.insertAdjacentHTML('afterBegin', prompt)
-  }
-}
+// function togglePrompt(newIdea) {
+//   console.log(ideaStorageArr);
+//   if (ideaStorageArr.length === 0) {
+//     console.log('do it!')
+//     var prompt =
+//     `<article id="empty-storage-prompt">
+//       <h2>Have a good idea?  Let me keep track of it for you!</h2>
+//     </article>`
+//     storageBox.insertAdjacentHTML('afterBegin', prompt)
+//   }
+// }
 
 function genCard(newIdea) {
+  initialPrompt.classList.add('hide-prompt')
 	var ideaCard = `
 		<article class = 'idea-card' id='${newIdea.id}'>
             <div class = 'idea-card-top'>
