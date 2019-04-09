@@ -108,18 +108,22 @@ function updateStar(e, cardId){
 }
 
 
-function updateIdeaArray(e){
+function updateIdeaArray(e, star){
   var tempArr = [];
+  console.log(star)
   for (i = 0; i < ideaStorageArr.length; i++) {
     var sameIdea = new Idea(ideaStorageArr[i].title, ideaStorageArr[i].body,
     ideaStorageArr[i].id, ideaStorageArr[i].quality, ideaStorageArr[i].star);
     tempArr.push(sameIdea);
     if(parseInt(e.target.parentNode.parentNode.id) === sameIdea.id) {
-      sameIdea.star = !sameIdea.star;
+      if(sameIdea.star === true){
+         sameIdea.star = false
+      }else{  sameIdea.star = true};
+      //sameIdea.star = !sameIdea.star;
       //console.log('my idea', sameIdea.star)
-      console.log(sameIdea)
+      console.log(sameIdea.star)
       console.log(i)
-      //sameIdea.updateIdea(sameIdea, i)
+      sameIdea.updateIdea(sameIdea, i)
     }
   }
 }
@@ -175,14 +179,14 @@ function isStorageEmpty(){
 
 /****************Storage Box**********/
 
-function togglePrompt() {
-  console.log(ideaStorageArr.length);
-  if (ideaStorageArr.length > 0) {
-    initialPrompt.classList.add('hidden')
-  } else if (ideaStorageArr.length === 0) {
-    initialPrompt.classList.remove('hidden')
-  }
-}
+// function togglePrompt() {
+//   console.log(ideaStorageArr.length);
+//   if (ideaStorageArr.length > 0) {
+//     initialPrompt.classList.add('hidden')
+//   } else if (ideaStorageArr.length === 0) {
+//     initialPrompt.classList.remove('hidden')
+//   }
+// }
 
 function modifyStar(newIdea){
   if(newIdea.star === true){

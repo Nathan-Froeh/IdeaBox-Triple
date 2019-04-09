@@ -15,11 +15,11 @@ class Idea{
   }
 
   saveToStorage(ideaStorageArr) {
-    togglePrompt()
+    //togglePrompt()
     localStorage.setItem('idea', JSON.stringify(ideaStorageArr));
   }
   deleteFromStorage(index) {
-    togglePrompt()
+    //togglePrompt()
     console.log(ideaStorageArr)
     console.log('Index ! ', index)
     ideaStorageArr.splice(index, 1)
@@ -43,7 +43,7 @@ function retrieveIdea() {
   console.log(ideaStorageArr)
   ideaStorageArr.forEach(function(idea){
     modifyStar(idea);
-    togglePrompt()
+    //togglePrompt()
   });
 }
 
