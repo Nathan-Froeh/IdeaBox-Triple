@@ -16,7 +16,6 @@ class Idea{
 
   saveToStorage(ideaStorageArr) {
     localStorage.setItem('idea', JSON.stringify(ideaStorageArr));
-    console.log(ideaStorageArr)
   }
   deleteFromStorage(index) {
     console.log(ideaStorageArr)
@@ -29,7 +28,6 @@ class Idea{
     console.log(sameIdea)
     ideaStorageArr.splice(index, 1, sameIdea)
     this.saveToStorage(ideaStorageArr)
-    console.log('my log', this.title);
     
   }
 

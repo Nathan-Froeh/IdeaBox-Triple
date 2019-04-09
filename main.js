@@ -29,7 +29,6 @@ storageBoxParent.addEventListener('click', function(event) {
   if (event.target.className === 'star') {
     var cardId = parseInt(event.target.parentNode.parentNode.id)
     updateStar(event, cardId);
-    console.log('current card', event.target.parentNode)
   }
   if (event.target.className === 'delete') {
     event.target.closest('.idea-card').remove();
@@ -55,7 +54,7 @@ storageBoxParent.addEventListener('input', function(event){
   }
 })
 
-function saveToIdea(e){
+function saveToIdea(){
   event.preventDefault();
   var title = ideaTitle.value;
   var body = ideaBody.value;
@@ -64,29 +63,37 @@ function saveToIdea(e){
   ideaStorageArr.push(idea);
   console.log(ideaStorageArr);
   idea.saveToStorage(ideaStorageArr);
-  genCard(idea);
+  modifyStar(idea);
   }
 
 function makeDeleteArray(e){
   var tempArr = [];
-  var localArr = JSON.parse(localStorage.getItem('idea'));
+  //var localArr = JSON.parse(localStorage.getItem('idea'));
   for (i = 0; i < ideaStorageArr.length; i++) {
     var sameIdea = new Idea(ideaStorageArr[i].title, ideaStorageArr[i].body,
     ideaStorageArr[i].id, ideaStorageArr[i].quality, ideaStorageArr[i].star);
     tempArr.push(sameIdea);
+    // console.log(sameIdea.id)
+    // console.log(parseInt(e.target.closest('.idea-card').id))
+    if(parseInt(e.target.closest('.idea-card').id) === sameIdea.id) {
+      console.log(sameIdea)
+      console.log(i)
+      //sameIdea.launchDeleteIdea(sameIdea, i)
+    }
+    
   }
  
-  launchDeleteIdea(tempArr, localArr, e)
+  //launchDeleteIdea(tempArr, localArr, e)
 }
 
-function launchDeleteIdea(tempArr, localArr, e) {
-  var cardId = parseInt(e.target.closest('.idea-card').id);
-  var ideaIndex = localArr.find(function (index){
-    return index.id == cardId;
-  });
-  var indexNumber = localArr.indexOf(ideaIndex);
-  tempArr[indexNumber].deleteFromStorage(indexNumber);
-} 
+// function launchDeleteIdea(tempArr, localArr, e) {
+//   var cardId = parseInt(e.target.closest('.idea-card').id);
+//   var ideaIndex = localArr.find(function (index){
+//     return index.id == cardId;
+//   });
+//   var indexNumber = localArr.indexOf(ideaIndex);
+//   tempArr[indexNumber].deleteFromStorage(indexNumber);
+// } 
 
 function updateStar(e, cardId){
   if (e.target.src.match("Images/star.svg")) {
@@ -96,55 +103,37 @@ function updateStar(e, cardId){
     e.target.src = "Images/star.svg";
     star = false
   }
-  console.log(ideaStorageArr)
   updateIdeaArray(e, star, cardId)
-  insertStar(e, star, cardId)
 }
 
-//
-function insertStar(e, star, cardId){
-  var localArr = JSON.parse(localStorage.getItem('idea'));
-  var starIndex = localArr.find(function (index){
-    return index.id = cardId;
- });
- var indexNumber = localArr.indexOf(starIndex);
- //console.log(starIndex, indexNumber)
-}
 
-function updateIdeaArray(e, star, cardId){
+function updateIdeaArray(e){
   var tempArr = [];
-  var localArr = JSON.parse(localStorage.getItem('idea'));
   for (i = 0; i < ideaStorageArr.length; i++) {
     var sameIdea = new Idea(ideaStorageArr[i].title, ideaStorageArr[i].body,
     ideaStorageArr[i].id, ideaStorageArr[i].quality, ideaStorageArr[i].star);
     tempArr.push(sameIdea);
     if(parseInt(e.target.parentNode.parentNode.id) === sameIdea.id) {
       sameIdea.star = !sameIdea.star;
-      console.log('my idea', sameIdea.star)
-      sameIdea.updateIdea(sameIdea, i)
-      // launchUpdateIdea(tempArr, localArr, e, star, cardId)/
+      //console.log('my idea', sameIdea.star)
+      console.log(sameIdea)
+      console.log(i)
+      //sameIdea.updateIdea(sameIdea, i)
     }
   }
-  console.log(ideaStorageArr);
-
-  // console.log('star val', starVal);
-  // console.log(sameIdea)
-  // console.log(tempArr)
-  // console.log(localArr)
-  // console.log(cardId)
 }
 
-function launchUpdateIdea(tempArr, localArr, e, star){
-  var cardId = parseInt(e.target.closest('.idea-card').id);
-  var ideaIndex = localArr.find(function (index){
-     return index.id = cardId;
-  });
-  // console.log(cardId)
-  // console.log(ideaIndex) // this links the star to the object but I think I need to do this for line 98 on the instantiation
-  var indexNumber = localArr.indexOf(ideaIndex);
-  tempArr[indexNumber].updateIdea(indexNumber, star);
-  // console.log(indexNumber)
-}
+// function launchUpdateIdea(tempArr, localArr, e, star){
+//   var cardId = parseInt(e.target.closest('.idea-card').id);
+//   var ideaIndex = localArr.find(function (index){
+//      return index.id = cardId;
+//   });
+//   // console.log(cardId)
+//   // console.log(ideaIndex) // this links the star to the object but I think I need to do this for line 98 on the instantiation
+//   var indexNumber = localArr.indexOf(ideaIndex);
+//   tempArr[indexNumber].updateIdea(indexNumber, star);
+//   // console.log(indexNumber)
+// }
 
 
 
