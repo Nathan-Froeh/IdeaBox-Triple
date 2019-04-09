@@ -84,7 +84,6 @@ ul li {
 /*Idea Box Section*/
 
 #idea-box {
-
     background-color: #a9aad2;
     display: flex;
     justify-content: center;
@@ -242,7 +241,7 @@ ul li {
     font-size: 20px;
     height: 90%;
     margin-top: 0.5%;
-    width: 40%;
+    width: 60%;
 }
 .ideabox-form-label {
     font-size: 3vh;
@@ -271,57 +270,6 @@ ul li {
     width: 100%;
     margin: 3% 0%;
 }
-#ideabox-save-button.enable {
-    background: #3f3f88;
-    outline: none;
-    }
-#ideabox-save-button.enable:hover {
-    background: #5356A4;
-    outline: none;
-    }
-#ideabox-search-input {
-    border: 2px solid #353567;
-    height: 10%;
-    width: 100%;
-    }
-#idea-box {
-    background-color: #a9aad2;
-    display: flex;
-    justify-content: center;
-    }
-#ideabox-form {
-    font-size: 20px;
-    height: 90%;
-    margin-top: 0.5%;
-    width: 40%;
-    }
-.ideabox-form-label {
-    font-size: 3vh;
-    }
-#ideabox-title-input {
-    border: 2px solid #353567;
-    font-size: 20px;
-    height: 10%;
-    margin: 3% 0%;
-    width: 100%;
-    }
-#ideabox-body-input {
-    border: 2px solid #353567;
-    font-size: 14px;
-    height: 30%;
-    margin: 1% 0%;
-    resize: none;
-    width: 100%;
-    }
-#ideabox-save-button {
-    background-color: #1f1f3d;
-    border: 2px solid #353567;
-    color: #ffffff;
-    height: 10%;
-    margin: 1% 0%;
-    width: 100%;
-    margin: 3% 0%;
-    }
 #ideabox-save-button.enable {
     background: #3f3f88;
     outline: none;
@@ -336,11 +284,89 @@ ul li {
     width: 100%;
     }
 .initial-prompt {
-    font-size: 18px;
+    font-size: 16px;
     }
 }
 @media screen and (max-width: 500px) {
-    
+body {
+    display: flex;
+    flex-direction: column;
+    }
+h1 {
+    font-size: 18px;
+}
+h3 {
+    font-size: 11px;
+}
+ul li {
+    font-size: 14px;
+    height: 30px;
+}
+#new-quality-input {
+    height: 10%;
+}
+.menu-button {
+    font-size: 9px;
+    height: 30px;
+}
+#idea-box {
+    background-color: #a9aad2;
+    display: flex;
+    justify-content: center;
+    height: 500px;
+}
+#ideabox-form {
+    font-size: 20px;
+    height: 90%;
+    margin-top: 0.5%;
+    width: 60%;
+}
+.ideabox-form-label {
+    font-size: 3vh;
+}
+#ideabox-title-input {
+    border: 2px solid #353567;
+    font-size: 20px;
+    height: 10%;
+    margin: 3% 0%;
+    width: 100%;
+}
+#ideabox-body-input {
+    border: 2px solid #353567;
+    font-size: 14px;
+    height: 30%;
+    margin: 1% 0%;
+    resize: none;
+    width: 100%;
+}
+#ideabox-save-button {
+    background-color: #1f1f3d;
+    border: 2px solid #353567;
+    color: #ffffff;
+    height: 10%;
+    margin: 1% 0%;
+    width: 100%;
+    margin: 3% 0%;
+}
+#ideabox-save-button.enable {
+    background: #3f3f88;
+    outline: none;
+    }
+#ideabox-save-button.enable:hover {
+    background: #5356A4;
+    outline: none;
+    }
+#ideabox-search-input {
+    border: 2px solid #353567;
+    height: 10%;
+    width: 100%;
+    }
+.initial-prompt {
+    font-size: 16px;
+    }
+#storage-box {
+    height: 500px;
+    }
 }
     
 
