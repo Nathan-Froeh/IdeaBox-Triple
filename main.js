@@ -182,4 +182,4 @@ function genCard(newIdea) {
           `
   storageBox.insertAdjacentHTML('afterBegin', ideaCard);
 };
-
+ 

@@ -38,7 +38,8 @@ class Idea{
 
 function retrieveIdea() {
         ideaStorageArr.forEach(function(idea){
-        	genCard(idea);
+          genCard(idea);
+          togglePrompt();
         });
     }
 
