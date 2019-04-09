@@ -1,17 +1,17 @@
-/*		MUST HAVE
-UpdateIdea
-UpdateQuality
-*/
+
 
 class Idea{
-  constructor(title, body,id, star){
-    this.id = id;
+  constructor(title, body, id, quality, star){
     this.title = title;
     this.body = body;
+    this.id = id;
+    this.quality = quality || 'Swill';
     this.star = star || false;
-    this.quality = 'Swill';
-    //this.xButton = xButton;
-    //console.log('Idea Test', this.title, this.body);
+
+    //console.log('star Test', this.star);
+    //its like the updateStar function is getting ran once for each object
+    //is there a simpler way I can make an array to reinstantiate
+    //I think I need to set the star to a specific idea object
   }
 
   saveToStorage(ideaStorageArr) {
@@ -25,15 +25,18 @@ class Idea{
     this.saveToStorage(ideaStorageArr)
   }
 
-   UpdateIdea(index){
-    console.group(index)
+   updateIdea(sameIdea, index){
+     console.log(sameIdea)
+     ideaStorageArr.splice(index, 1, sameIdea)
+     this.saveToStorage(ideaStorageArr)
+    //  ideaStorageArr.splice(i, 1)
+    //  this.saveToStorage(ideaStorageArr)
+     console.log('my log', this.title);
+    // 
     // recognize star or text update
     // update storage
    }
 
-   //after star click, see what star is true or false
-   //toggle star image
-   //send true or false 
 
 
   // UpdateQuality(){}
@@ -41,18 +44,11 @@ class Idea{
 
 
 function retrieveIdea() {
-        ideaStorageArr.forEach(function(idea){
-        	genCard(idea);
-        });
-    }
+  ideaStorageArr.forEach(function(idea){
+    genCard(idea);
+  });
+}
 
-// function getOldIdeas(ideaStorageArr) {
-  // for (i = 0; i < ideaStorageArr.length; i++) {
-  //   var sameIdea = new Idea(ideaStorageArr[i].title, ideaStorageArr[i].body, ideaStorageArr[i].id, ideaStorageArr[i].quality);
-  //   ideaStorageArr.push(sameIdea);
-  //   console.log('SUP')
-  // }
-// }
 
 
 

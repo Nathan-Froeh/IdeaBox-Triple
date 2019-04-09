@@ -27,10 +27,9 @@ saveButton.addEventListener('click', saveToIdea);
 //combine into 1 eventListener
 storageBoxParent.addEventListener('click', function(event) {
   if (event.target.className === 'star') {
-    console.log(event.target.parentNode.parentNode.id)
-    //console.log(event)
-    updateStar(event);
-    updateIdeaArray(event)
+    var cardId = parseInt(event.target.parentNode.parentNode.id)
+    updateStar(event, cardId);
+    console.log('current card', event.target.parentNode)
   }
   if (event.target.className === 'delete') {
     event.target.closest('.idea-card').remove();
@@ -47,12 +46,12 @@ storageBoxParent.addEventListener('click', function(event) {
   }
 });
 
-function saveToIdea(e,star){
+function saveToIdea(e){
   event.preventDefault();
   var title = ideaTitle.value;
   var body = ideaBody.value;
   var id = Date.now();
-  var idea = new Idea(title,body,id,star);
+  var idea = new Idea(title,body,id); //put local vars in place of parameters 
   ideaStorageArr.push(idea);
   console.log(ideaStorageArr);
   idea.saveToStorage(ideaStorageArr);
@@ -67,6 +66,7 @@ function makeDeleteArray(e){
     ideaStorageArr[i].id, ideaStorageArr[i].quality, ideaStorageArr[i].star);
     tempArr.push(sameIdea);
   }
+ 
   launchDeleteIdea(tempArr, localArr, e)
 }
 
@@ -79,8 +79,7 @@ function launchDeleteIdea(tempArr, localArr, e) {
   tempArr[indexNumber].deleteFromStorage(indexNumber);
 } 
 
-function updateStar(e){
-  console.log(e.target.src)
+function updateStar(e, cardId){
   if (e.target.src.match("Images/star.svg")) {
      e.target.src = "Images/star-active.svg";
      var star = true
@@ -88,28 +87,57 @@ function updateStar(e){
     e.target.src = "Images/star.svg";
     star = false
   }
-  updateIdeaArray(e, star)
+  console.log(ideaStorageArr)
+  updateIdeaArray(e, star, cardId)
+  insertStar(e, star, cardId)
 }
 
-function updateIdeaArray(e, star){
+//
+function insertStar(e, star, cardId){
+  var localArr = JSON.parse(localStorage.getItem('idea'));
+  var starIndex = localArr.find(function (index){
+    return index.id = cardId;
+ });
+ var indexNumber = localArr.indexOf(starIndex);
+ //console.log(starIndex, indexNumber)
+}
+
+function updateIdeaArray(e, star, cardId){
   var tempArr = [];
   var localArr = JSON.parse(localStorage.getItem('idea'));
   for (i = 0; i < ideaStorageArr.length; i++) {
     var sameIdea = new Idea(ideaStorageArr[i].title, ideaStorageArr[i].body,
     ideaStorageArr[i].id, ideaStorageArr[i].quality, ideaStorageArr[i].star);
     tempArr.push(sameIdea);
+    //console.log(e.target.parentNode.parentNode.id)
+    //console.log(sameIdea.id)
+    if(parseInt(e.target.parentNode.parentNode.id) === sameIdea.id) {
+      // sameIdea.star = sameIdea.star === true ? false : true;
+      sameIdea.star = !sameIdea.star;
+      console.log('my idea', sameIdea)
+      sameIdea.updateIdea(sameIdea, i)
+      // launchUpdateIdea(tempArr, localArr, e, star, cardId)/
+    }
   }
-  launchUpdateIdea(tempArr, localArr, e, star)
+  console.log(ideaStorageArr);
+
+  // console.log('star val', starVal);
+  // console.log(sameIdea)
+  // console.log(tempArr)
+  // console.log(localArr)
+  // console.log(cardId)
 }
 
 function launchUpdateIdea(tempArr, localArr, e, star){
   var cardId = parseInt(e.target.closest('.idea-card').id);
   var ideaIndex = localArr.find(function (index){
-    return index.id == cardId;
+     return index.id = cardId;
   });
+  // console.log(cardId)
+  // console.log(ideaIndex) // this links the star to the object but I think I need to do this for line 98 on the instantiation
   var indexNumber = localArr.indexOf(ideaIndex);
-  tempArr[indexNumber].UpdateIdea(indexNumber);
-  //saveToIdea(e, star)
+  tempArr[indexNumber].updateIdea(indexNumber, star);
+  // console.log(indexNumber)
 }
 
 
@@ -127,10 +155,6 @@ function checkInputFields() {
 	}
 }
 
-function runIdea(title, body) {
-	var title = ideaTitle.value;
-	var body = ideaBody.value;
-}
 
 // function deleteIdea(event) {
 //     console.log(event.target);
@@ -164,7 +188,7 @@ function genCard(newIdea) {
             </div>
             <article>
                 <h4 class = 'idea-card-title'>${newIdea.title}</h4>
-                <p class = 'idea-card-text'>${newIdea.body}${newIdea.id}</p>
+                <p class = 'idea-card-text'>${newIdea.body} ! ${newIdea.id}</p>
             </article>
             <div class = 'idea-card-bottom'>
                 <input type = 'image' src = 'Images/upvote.svg' class = 'upvote-deact'>
