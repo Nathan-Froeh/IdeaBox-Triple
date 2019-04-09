@@ -26,6 +26,7 @@ body {
     display: flex;
     grid-row-end: 3;
     grid-row-start: 1;
+    padding-left: 15px;
 }
     nav {
         border-bottom: 1px solid #353567;
@@ -41,11 +42,11 @@ body {
     h3 {
         font-size: 14px;
         font-weight: lighter;
-        margin-left: 10px;
+        /* margin-left: 10px; */
     }
 
     #menubar-list {
-        margin-left: 5px;
+        margin-left: -45px;
     }
     ul li:hover {
         background-color: #d14119;
