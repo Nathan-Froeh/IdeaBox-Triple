@@ -46,6 +46,15 @@ storageBoxParent.addEventListener('click', function(event) {
   }
 });
 
+storageBoxParent.addEventListener('input', function(event){
+  if(event.target.className === 'idea-card-title'){
+    console.log('Title')
+  }
+  if(event.target.className === 'idea-card-text'){
+    console.log('Body')
+  }
+})
+
 function saveToIdea(e){
   event.preventDefault();
   var title = ideaTitle.value;
@@ -109,10 +118,7 @@ function updateIdeaArray(e, star, cardId){
     var sameIdea = new Idea(ideaStorageArr[i].title, ideaStorageArr[i].body,
     ideaStorageArr[i].id, ideaStorageArr[i].quality, ideaStorageArr[i].star);
     tempArr.push(sameIdea);
-    //console.log(e.target.parentNode.parentNode.id)
-    //console.log(sameIdea.id)
     if(parseInt(e.target.parentNode.parentNode.id) === sameIdea.id) {
-      // sameIdea.star = sameIdea.star === true ? false : true;
       sameIdea.star = !sameIdea.star;
       console.log('my idea', sameIdea.star)
       sameIdea.updateIdea(sameIdea, i)
@@ -194,8 +200,8 @@ function genCard(newIdea, starValue) {
                 <input type = 'image' src = 'Images/delete.svg' class = 'delete'>
             </div>
             <article>
-                <h4 class = 'idea-card-title'>${newIdea.title}</h4>
-                <p class = 'idea-card-text'>${newIdea.body} ! ${newIdea.id}</p>
+                <h4 class = 'idea-card-title' contenteditable = 'true'>${newIdea.title}</h4>
+                <p class = 'idea-card-text' contenteditable = 'true'>${newIdea.body} ! ${newIdea.id}</p>
             </article>
             <div class = 'idea-card-bottom'>
                 <input type = 'image' src = 'Images/upvote.svg' class = 'upvote-deact'>
