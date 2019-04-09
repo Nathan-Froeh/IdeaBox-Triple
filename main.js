@@ -1,5 +1,3 @@
-
-
 var ideaStorageArr = JSON.parse(localStorage.getItem('idea')) || [];
 var ideaTitle = document.querySelector("#ideabox-title-input");
 var ideaBody = document.querySelector("#ideabox-body-input");
@@ -28,8 +26,8 @@ saveButton.addEventListener('click', saveToIdea);
 //combine into 1 eventListener
 storageBoxParent.addEventListener('click', function(event) {
   if (event.target.className === 'star') {
-    var cardId = parseInt(event.target.parentNode.parentNode.id)
-    updateStar(event, cardId);
+    console.log(event.target.parentNode.parentNode.id)
+    updateStar(event);
   }
   if (event.target.className === 'delete') {
     event.target.closest('.idea-card').remove();
@@ -55,7 +53,7 @@ storageBoxParent.addEventListener('input', function(event){
   }
 })
 
-function saveToIdea(){
+function saveToIdea(e,star){
   event.preventDefault();
   var title = ideaTitle.value;
   var body = ideaBody.value;
@@ -66,6 +64,7 @@ function saveToIdea(){
   idea.saveToStorage(ideaStorageArr);
   modifyStar(idea);
   }
+
 
 function makeDeleteArray(e){
   var tempArr = [];
@@ -81,7 +80,6 @@ function makeDeleteArray(e){
     //   console.log(i)
     //   //sameIdea.launchDeleteIdea(sameIdea, i)
     // }
-    
   }
  
   launchDeleteIdea(tempArr, localArr, e) //get rid of this and the function with line 79
@@ -96,7 +94,8 @@ function launchDeleteIdea(tempArr, localArr, e) {
   tempArr[indexNumber].deleteFromStorage(indexNumber);
 } 
 
-function updateStar(e, cardId){
+function updateStar(e){
+  console.log(e.target.src)
   if (e.target.src.match("Images/star.svg")) {
      e.target.src = "Images/star-active.svg";
      var star = true
@@ -104,9 +103,9 @@ function updateStar(e, cardId){
     e.target.src = "Images/star.svg";
     star = false
   }
-  updateIdeaArray(e, star, cardId)
+  console.log(star)
+  updateIdeaArray(e, star)
 }
-
 
 function updateIdeaArray(e, star){
   var tempArr = [];
@@ -116,34 +115,13 @@ function updateIdeaArray(e, star){
     ideaStorageArr[i].id, ideaStorageArr[i].quality, ideaStorageArr[i].star);
     tempArr.push(sameIdea);
     if(parseInt(e.target.parentNode.parentNode.id) === sameIdea.id) {
-      if(sameIdea.star === true){
-         sameIdea.star = false
-      }else{  sameIdea.star = true};
-      //sameIdea.star = !sameIdea.star;
-      //console.log('my idea', sameIdea.star)
-      console.log(sameIdea.star)
-      console.log(i)
+      sameIdea.star = !sameIdea.star;
       sameIdea.updateIdea(sameIdea, i)
     }
   }
 }
 
-// function launchUpdateIdea(tempArr, localArr, e, star){
-//   var cardId = parseInt(e.target.closest('.idea-card').id);
-//   var ideaIndex = localArr.find(function (index){
-//      return index.id = cardId;
-//   });
-//   // console.log(cardId)
-//   // console.log(ideaIndex) // this links the star to the object but I think I need to do this for line 98 on the instantiation
-//   var indexNumber = localArr.indexOf(ideaIndex);
-//   tempArr[indexNumber].updateIdea(indexNumber, star);
-//   // console.log(indexNumber)
-// }
-
-
-
 /****************Idea Box*****************/
-
 
 function checkInputFields() {
 	if (ideaTitle.value && ideaBody.value !== '') {
@@ -155,38 +133,22 @@ function checkInputFields() {
 	}
 }
 
-
-// function deleteIdea(event) {
-//     console.log(event.target);
-//     var ideaLocation = findId(event); 
-//     console.log(ideaLocation);
-//     event.target.closest('.idea-card').remove();
-//     ideaStorageArr[ideaLocation].deleteFromStorage(ideaLocation);
-//     saveToStorage();
-// }
-
-
 function isStorageEmpty(){
   if(ideaStorageArr != []){
     retrieveIdea()
   }
 }
 
-
-  //getAttribute('src')
-  //setAttribute('src', star-active.svg)
-
-
 /****************Storage Box**********/
+function togglePrompt() {
+  console.log(ideaStorageArr.length);
+  if (ideaStorageArr.length > 0) {
+    initialPrompt.classList.add('hidden')
+  } else if (ideaStorageArr.length === 0) {
+    initialPrompt.classList.remove('hidden')
+  }
+}
 
-// function togglePrompt() {
-//   console.log(ideaStorageArr.length);
-//   if (ideaStorageArr.length > 0) {
-//     initialPrompt.classList.add('hidden')
-//   } else if (ideaStorageArr.length === 0) {
-//     initialPrompt.classList.remove('hidden')
-//   }
-// }
 
 function modifyStar(newIdea){
   if(newIdea.star === true){
@@ -215,7 +177,3 @@ function genCard(newIdea, starValue) {
           `
   storageBox.insertAdjacentHTML('afterBegin', ideaCard);
 };
-
-
-
-

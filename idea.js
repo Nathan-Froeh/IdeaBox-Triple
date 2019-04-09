@@ -19,7 +19,7 @@ class Idea{
     localStorage.setItem('idea', JSON.stringify(ideaStorageArr));
   }
   deleteFromStorage(index) {
-    //togglePrompt()
+    togglePrompt();
     console.log(ideaStorageArr)
     console.log('Index ! ', index)
     ideaStorageArr.splice(index, 1)
@@ -27,32 +27,32 @@ class Idea{
   }
 
   updateIdea(sameIdea, index){
-    console.log(sameIdea)
+    //console.log(sameIdea)
     ideaStorageArr.splice(index, 1, sameIdea)
     this.saveToStorage(ideaStorageArr)
     
   }
 
 
+   //after star click, see what star is true or false
+   //toggle star image
+   //send true or false 
+
 
   // UpdateQuality(){}
 };
 
-
 function retrieveIdea() {
-  console.log(ideaStorageArr)
-  ideaStorageArr.forEach(function(idea){
-    modifyStar(idea);
-    //togglePrompt()
-  });
-}
+        ideaStorageArr.forEach(function(idea){
+          modifyStar(idea);
+          togglePrompt();
+        });
+    }
 
-
-
-
-
-
-
-
-
-
+// function getOldIdeas(ideaStorageArr) {
+  // for (i = 0; i < ideaStorageArr.length; i++) {
+  //   var sameIdea = new Idea(ideaStorageArr[i].title, ideaStorageArr[i].body, ideaStorageArr[i].id, ideaStorageArr[i].quality);
+  //   ideaStorageArr.push(sameIdea);
+  //   console.log('SUP')
+  // }
+// }
