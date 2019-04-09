@@ -14,6 +14,7 @@ var starButton = document.querySelector('.star');
 var qualityUpButton = document.querySelector('.upvote-deact');
 var qualityDownButton = document.querySelector('.downvote-deact');
 var deleteButton = document.querySelector('.delete');
+var initialPrompt = document.querySelector('.initial-prompt');
 
 var storageBoxParent = document.querySelector('#storage-box');
 
@@ -68,32 +69,32 @@ function saveToIdea(){
 
 function makeDeleteArray(e){
   var tempArr = [];
-  //var localArr = JSON.parse(localStorage.getItem('idea'));
+  var localArr = JSON.parse(localStorage.getItem('idea')); //comment out this line
   for (i = 0; i < ideaStorageArr.length; i++) {
     var sameIdea = new Idea(ideaStorageArr[i].title, ideaStorageArr[i].body,
     ideaStorageArr[i].id, ideaStorageArr[i].quality, ideaStorageArr[i].star);
     tempArr.push(sameIdea);
     // console.log(sameIdea.id)
     // console.log(parseInt(e.target.closest('.idea-card').id))
-    if(parseInt(e.target.closest('.idea-card').id) === sameIdea.id) {
-      console.log(sameIdea)
-      console.log(i)
-      //sameIdea.launchDeleteIdea(sameIdea, i)
-    }
+    // if(parseInt(e.target.closest('.idea-card').id) === sameIdea.id) {
+    //   console.log(sameIdea)
+    //   console.log(i)
+    //   //sameIdea.launchDeleteIdea(sameIdea, i)
+    // }
     
   }
  
-  //launchDeleteIdea(tempArr, localArr, e)
+  launchDeleteIdea(tempArr, localArr, e) //get rid of this and the function with line 79
 }
 
-// function launchDeleteIdea(tempArr, localArr, e) {
-//   var cardId = parseInt(e.target.closest('.idea-card').id);
-//   var ideaIndex = localArr.find(function (index){
-//     return index.id == cardId;
-//   });
-//   var indexNumber = localArr.indexOf(ideaIndex);
-//   tempArr[indexNumber].deleteFromStorage(indexNumber);
-// } 
+function launchDeleteIdea(tempArr, localArr, e) {
+  var cardId = parseInt(e.target.closest('.idea-card').id);
+  var ideaIndex = localArr.find(function (index){
+    return index.id == cardId;
+  });
+  var indexNumber = localArr.indexOf(ideaIndex);
+  tempArr[indexNumber].deleteFromStorage(indexNumber);
+} 
 
 function updateStar(e, cardId){
   if (e.target.src.match("Images/star.svg")) {
@@ -173,6 +174,15 @@ function isStorageEmpty(){
 
 
 /****************Storage Box**********/
+
+function togglePrompt() {
+  console.log(ideaStorageArr.length);
+  if (ideaStorageArr.length > 0) {
+    initialPrompt.classList.add('hidden')
+  } else if (ideaStorageArr.length === 0) {
+    initialPrompt.classList.remove('hidden')
+  }
+}
 
 function modifyStar(newIdea){
   if(newIdea.star === true){

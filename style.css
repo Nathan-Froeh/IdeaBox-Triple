@@ -154,6 +154,10 @@ body {
     flex-wrap: wrap;
 }
 
+.hidden {
+    display: none;
+ }
+
 img{
 	width: 20px;
 }
