@@ -114,7 +114,7 @@ function updateIdeaArray(e, star, cardId){
     if(parseInt(e.target.parentNode.parentNode.id) === sameIdea.id) {
       // sameIdea.star = sameIdea.star === true ? false : true;
       sameIdea.star = !sameIdea.star;
-      console.log('my idea', sameIdea)
+      console.log('my idea', sameIdea.star)
       sameIdea.updateIdea(sameIdea, i)
       // launchUpdateIdea(tempArr, localArr, e, star, cardId)/
     }
@@ -179,11 +179,18 @@ function isStorageEmpty(){
 
 /****************Storage Box**********/
 
-function genCard(newIdea) {
+function modifyStar(newIdea){
+  if(newIdea.star === true){
+    var starValue = 'Images/star-active.svg'
+  }else{starValue = 'Images/star.svg'}
+  genCard(newIdea, starValue)
+}
+
+function genCard(newIdea, starValue) {
 	var ideaCard = `
 		<article class = 'idea-card' id='${newIdea.id}'>
             <div class = 'idea-card-top'>
-                <input type = 'image' src = 'Images/star.svg' class = 'star' alt = 'star-button'>
+                <input type = 'image' src = ${starValue} class = 'star' alt = 'star-button'>
                 <input type = 'image' src = 'Images/delete.svg' class = 'delete'>
             </div>
             <article>

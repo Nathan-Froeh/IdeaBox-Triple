@@ -25,17 +25,13 @@ class Idea{
     this.saveToStorage(ideaStorageArr)
   }
 
-   updateIdea(sameIdea, index){
-     console.log(sameIdea)
-     ideaStorageArr.splice(index, 1, sameIdea)
-     this.saveToStorage(ideaStorageArr)
-    //  ideaStorageArr.splice(i, 1)
-    //  this.saveToStorage(ideaStorageArr)
-     console.log('my log', this.title);
-    // 
-    // recognize star or text update
-    // update storage
-   }
+  updateIdea(sameIdea, index){
+    console.log(sameIdea)
+    ideaStorageArr.splice(index, 1, sameIdea)
+    this.saveToStorage(ideaStorageArr)
+    console.log('my log', this.title);
+    
+  }
 
 
 
@@ -44,8 +40,9 @@ class Idea{
 
 
 function retrieveIdea() {
+  console.log(ideaStorageArr)
   ideaStorageArr.forEach(function(idea){
-    genCard(idea);
+    modifyStar(idea);
   });
 }
 
