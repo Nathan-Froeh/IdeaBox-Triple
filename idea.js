@@ -6,7 +6,7 @@ class Idea{
     this.body = body;
     this.id = id;
     this.quality = quality || 'Swill';
-    this.star = star || false;
+    this.star = false;
 
     //console.log('star Test', this.star);
     //its like the updateStar function is getting ran once for each object
@@ -24,9 +24,9 @@ class Idea{
     this.saveToStorage(ideaStorageArr)
   }
 
-  updateIdea(sameIdea, index){
+  updateIdea(ideaStorageArr){
     //console.log(sameIdea)
-    ideaStorageArr.splice(index, 1, sameIdea)
+    //ideaStorageArr.splice(index, 1, sameIdea)
     this.saveToStorage(ideaStorageArr)
     
   }
