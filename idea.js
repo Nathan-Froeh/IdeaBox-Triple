@@ -15,13 +15,11 @@ class Idea{
   }
 
   saveToStorage(ideaStorageArr) {
-    //togglePrompt()
+    togglePrompt()
     localStorage.setItem('idea', JSON.stringify(ideaStorageArr));
   }
   deleteFromStorage(index) {
     togglePrompt();
-    console.log(ideaStorageArr)
-    console.log('Index ! ', index)
     ideaStorageArr.splice(index, 1)
     this.saveToStorage(ideaStorageArr)
   }

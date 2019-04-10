@@ -46,14 +46,17 @@ storageBoxParent.addEventListener('click', function(event) {
 
 storageBoxParent.addEventListener('input', function(event){
   if(event.target.className === 'idea-card-title'){
-    console.log('Title')
+    var title = event.target.innerText
+    console.log(event)
+    updateIdeaText(event, title);
   }
-  if(event.target.className === 'idea-card-text'){
-    console.log('Body')
+  else if(event.target.className === 'idea-card-text'){
+    var text = event.target.innerText
+    updateIdeaText(event, text);
   }
 })
 
-function saveToIdea(e,star){
+function saveToIdea(e){
   event.preventDefault();
   var title = ideaTitle.value;
   var body = ideaBody.value;
@@ -120,6 +123,48 @@ function updateIdeaArray(e, star){
     }
   }
 }
+function reinstantiate (i) {
+  console.log(ideaStorageArr)
+  return new Idea(ideaStorageArr[i].title, ideaStorageArr[i].body,
+    ideaStorageArr[i].id, ideaStorageArr[i].quality, ideaStorageArr[i].star);
+
+}
+function updateIdeaText(e, updatedText){
+  ideaStorageArr.forEach(function(idea, index){
+    var myIdea = reinstantiate(index)
+    //console.log(e.target.className) // the event I clicked
+    //console.log(updatedText) // the updated text
+     //console.log(idea.id) // ideas in array
+     //console.log(index); // index of each item in array
+    if((parseInt(e.target.parentNode.parentNode.id) === idea.id) && (e.target.className === 'idea-card-title')){
+      ideaStorageArr[index].title = updatedText;
+      myIdea.saveToStorage(ideaStorageArr)
+    } else if((parseInt(e.target.parentNode.parentNode.id) === idea.id) && (e.target.className === 'idea-card-text')){
+      ideaStorageArr[index].body = updatedText;
+      myIdea.saveToStorage(ideaStorageArr)
+    }
+  })
+}
+
+ function myFunction(e) {
+  var myIndex = iterate(ideaStorageArr, e.target)
+  var myIdea = reinstatntiate(myIndex)
+  myIdea.star = !myIdea.star
+  myIdea.saveToStorage();
+ }
+
+
+  // var tempArr = [];
+  // console.log(star)
+  // for (i = 0; i < ideaStorageArr.length; i++) {
+  //   var sameIdea = new Idea(ideaStorageArr[i].title, ideaStorageArr[i].body,
+  //   ideaStorageArr[i].id, ideaStorageArr[i].quality, ideaStorageArr[i].star);
+  //   tempArr.push(sameIdea);
+  //   if(parseInt(e.target.parentNode.parentNode.id) === sameIdea.id) {
+  //     sameIdea.star = !sameIdea.star;
+  //     sameIdea.updateIdea(sameIdea, i)
+  //   }
+  // }
 
 /****************Idea Box*****************/
 
@@ -141,7 +186,7 @@ function isStorageEmpty(){
 
 /****************Storage Box**********/
 function togglePrompt() {
-  console.log(ideaStorageArr.length);
+  //console.log(ideaStorageArr.length);
   if (ideaStorageArr.length > 0) {
     initialPrompt.classList.add('hidden')
   } else if (ideaStorageArr.length === 0) {
@@ -166,7 +211,7 @@ function genCard(newIdea, starValue) {
             </div>
             <article>
                 <h4 class = 'idea-card-title' contenteditable = 'true'>${newIdea.title}</h4>
-                <p class = 'idea-card-text' contenteditable = 'true'>${newIdea.body} ! ${newIdea.id}</p>
+                <p class = 'idea-card-text' contenteditable = 'true'>${newIdea.body}</p>
             </article>
             <div class = 'idea-card-bottom'>
                 <input type = 'image' src = 'Images/upvote.svg' class = 'upvote-deact'>
