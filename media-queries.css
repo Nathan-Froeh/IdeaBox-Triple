@@ -144,7 +144,7 @@ ul li {
 
 .idea-card{
   height: 40%;
-  margin: 10px;
+  margin: 10px auto;
   width: 90%;
 }
 }

@@ -121,7 +121,7 @@ function togglePrompt() {
 };
 
 function modifyStar(newIdea) {
-  if(newIdea.star === true) {
+  if (newIdea.star === true) {
     var starValue = 'Images/star-active.svg'
   } else {starValue = 'Images/star.svg'};
   genCard(newIdea, starValue);
