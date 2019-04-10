@@ -198,6 +198,10 @@ ul li {
 	margin: auto;
 }
 
+.hidden {
+  display: none;
+}
+
 img{
 	width: 20px;
 }
