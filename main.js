@@ -58,69 +58,37 @@ storageBoxParent.addEventListener('input', function(event){
 
 function saveToIdea(e){
   event.preventDefault();
-  var title = ideaTitle.value;
-  var body = ideaBody.value;
-  var id = Date.now();
-  var idea = new Idea(title,body,id); //put local vars in place of parameters 
+  var idea = new Idea(ideaTitle.value,ideaBody.value,Date.now());
   ideaStorageArr.push(idea);
-  console.log(ideaStorageArr);
   idea.saveToStorage(ideaStorageArr);
   modifyStar(idea);
   }
 
 
 function makeDeleteArray(e){
-  var tempArr = [];
-  var localArr = JSON.parse(localStorage.getItem('idea')); //comment out this line
-  for (i = 0; i < ideaStorageArr.length; i++) {
-    var sameIdea = new Idea(ideaStorageArr[i].title, ideaStorageArr[i].body,
-    ideaStorageArr[i].id, ideaStorageArr[i].quality, ideaStorageArr[i].star);
-    tempArr.push(sameIdea);
-    // console.log(sameIdea.id)
-    // console.log(parseInt(e.target.closest('.idea-card').id))
-    // if(parseInt(e.target.closest('.idea-card').id) === sameIdea.id) {
-    //   console.log(sameIdea)
-    //   console.log(i)
-    //   //sameIdea.launchDeleteIdea(sameIdea, i)
-    // }
-  }
- 
-  launchDeleteIdea(tempArr, localArr, e) //get rid of this and the function with line 79
+  ideaStorageArr.forEach(function(idea, index){
+    var myIdea = reinstantiate(index)
+    if(parseInt(e.target.closest('.idea-card').id) == idea.id){
+      console.log(index)
+      myIdea.deleteFromStorage(index)
+    }
+  })
 }
 
-function launchDeleteIdea(tempArr, localArr, e) {
-  var cardId = parseInt(e.target.closest('.idea-card').id);
-  var ideaIndex = localArr.find(function (index){
-    return index.id == cardId;
-  });
-  var indexNumber = localArr.indexOf(ideaIndex);
-  tempArr[indexNumber].deleteFromStorage(indexNumber);
-} 
-
 function updateStar(e){
-  console.log(e.target.src)
-  if (e.target.src.match("Images/star.svg")) {
-     e.target.src = "Images/star-active.svg";
-     var star = true
-   }else {
-    e.target.src = "Images/star.svg";
-    star = false
-  }
+  var star = false;
+  e.target.src.match("Images/star.svg") ? e.target.src = "Images/star-active.svg" : e.target.src = "Images/star.svg"
+  e.target.src.match("Images/star.svg") ? star = false : star = true;
   updateStarArray(e, star)
 }
 
-function updateStarArray(e){
-  // var tempArr = [];
-  //console.log(star)
+function updateStarArray(e, star){
   ideaStorageArr.forEach(function(idea, index){
     var myIdea = reinstantiate(index)
     if(parseInt(e.target.parentNode.parentNode.id) === idea.id){
-
-
-      ideaStorageArr[index].star = !ideaStorageArr[index].star;
+      //ideaStorageArr[index].star = !ideaStorageArr[index].star;
       console.log(ideaStorageArr[index].star)
-
-      myIdea.updateIdea(ideaStorageArr)
+      myIdea.updateIdea(ideaStorageArr, index, star)
     }
 
 
@@ -137,7 +105,6 @@ function updateStarArray(e){
   // }
 }
 function reinstantiate (i) {
-  console.log(ideaStorageArr)
   return new Idea(ideaStorageArr[i].title, ideaStorageArr[i].body,
     ideaStorageArr[i].id, ideaStorageArr[i].quality, ideaStorageArr[i].star);
 
@@ -205,6 +172,7 @@ function togglePrompt() {
 
 
 function modifyStar(newIdea){
+  console.log(newIdea.star)
   if(newIdea.star === true){
     var starValue = 'Images/star-active.svg'
   }else{starValue = 'Images/star.svg'}

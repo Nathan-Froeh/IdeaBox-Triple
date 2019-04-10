@@ -6,7 +6,7 @@ class Idea{
     this.body = body;
     this.id = id;
     this.quality = quality || 'Swill';
-    this.star = false;
+    this.star = star;
 
     //console.log('star Test', this.star);
     //its like the updateStar function is getting ran once for each object
@@ -15,6 +15,7 @@ class Idea{
   }
 
   saveToStorage(ideaStorageArr) {
+    console.log(ideaStorageArr.star)
     togglePrompt()
     localStorage.setItem('idea', JSON.stringify(ideaStorageArr));
   }
@@ -24,7 +25,9 @@ class Idea{
     this.saveToStorage(ideaStorageArr)
   }
 
-  updateIdea(ideaStorageArr){
+  updateIdea(ideaStorageArr, index, star){
+    star ? ideaStorageArr[index].star = true : ideaStorageArr[index].star = false;
+    console.log(ideaStorageArr[index].star)
     //console.log(sameIdea)
     //ideaStorageArr.splice(index, 1, sameIdea)
     this.saveToStorage(ideaStorageArr)
@@ -42,6 +45,7 @@ class Idea{
 
 function retrieveIdea() {
         ideaStorageArr.forEach(function(idea){
+          console.log(ideaStorageArr.star)
           modifyStar(idea);
           togglePrompt();
         });
