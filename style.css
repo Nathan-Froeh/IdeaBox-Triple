@@ -2,8 +2,8 @@ HTML {
     height: 100%;    
 }
 * {
-    font-family: 'Open sans', sans-serif;
     box-sizing: border-box;
+    font-family: 'Open sans', sans-serif;
 }
 body {
     display: grid;
@@ -19,14 +19,14 @@ body {
 /*Menu Bar Aside*/
 
 #menu-bar {
-    height: 100%;
     background-color: #1f1f3d;
     border: 1px solid;
     color: #eaeaf4;
     display: flex;
     grid-row-end: 3;
     grid-row-start: 1;
-    padding: 0px 15px 0px 15px;;
+    height: 100%;
+    padding: 0px 15px 0px 15px;
 }
 h1 {
     font-size: 20px;
@@ -45,9 +45,7 @@ nav {
 h3 {
     font-size: 14px;
     font-weight: lighter;
-    /* margin-left: 10px; */
 }
-
 #menubar-list {
     margin-left: -45px;
 }
@@ -91,304 +89,38 @@ ul li {
     display: flex;
     justify-content: center;
 }
-    #ideabox-form {
-        font-size: 20px;
-        height: 90%;
-        margin-top: 0.5%;
-        width: 40%;
-    }
-    .ideabox-form-label {
-        font-size: 3vh;
-    }
-    #ideabox-title-input {
-        border: 2px solid #353567;
-        font-size: 20px;
-        height: 25px;
-        margin: 3% 0%;
-        width: 100%;
-    }
-    #ideabox-body-input {
-        border: 2px solid #353567;
-        font-size: 14px;
-        height: 75px;
-        margin: 1% 0%;
-        resize: none;
-        width: 100%;
-    }
-    #ideabox-save-button {
-        background-color: #1f1f3d;
-        border: 2px solid #353567;
-        color: #ffffff;
-        height: 10%;
-        width: 100%;
-        margin: 3% 0%;
-        font-size: 16px;
-    }
-    #ideabox-save-button.enable {
-        background: #3f3f88;
-        outline: none;
-      }
-    #ideabox-save-button.enable:hover {
-        background: #5356A4;
-        outline: none;
-      }
-    #search-input-button-container {
-        box-sizing: border-box;
-        height: 50px;
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-}
-    #ideabox-search-input {
-        box-sizing: border-box;
-        border: 2px solid #353567;
-        border-left: none;
-        float: right;
-        height: 30px;
-        width: 100%;
-    }
-    #search-button {
-        border: 2px solid #353567;
-        box-sizing: border-box;
-        border-right: none;
-        height: 30px;
-        width: 25px;
-        }
-
-/*Storage Box Section*/
-
-.delete,
-.star,
-.upvote-deact,
-.downvote-deact{
-	width: 20px;
-}
-
-
-#storage-box {
-	padding: 10px;
-    display: flex;
-    grid-column-end: 3;
-    background-color: #eaeaf4;
-    display: flex;
-    justify-content: space-around;
-    align-content: space-around;
-    flex-wrap: wrap;
-}
-.hidden {
-    display: none;
-}
-.initial-prompt {
-    font-size: 22px;
-    align-self: center;
-    margin: auto;
-    margin-top: 25px;
-}
-
-img{
-	width: 20px;
-}
-
-.idea-card{
-	height: 250px;
-    width: 45%;
-    min-width: 40%;
-    margin: 10px 0px;
-}
-
-.idea-card-top{
-	height: 20px;
-	width: 100%;
-	background-color: #1f1f3d;
-	display: flex;
-	justify-content: space-between;
-}
-
-article{
-	height: 80%;
-	width: 100%;
-	background-color: #ffffff;
-	display: flex;
-	justify-content: flex-start;
-	flex-wrap: wrap;
-}
-
-h4{
-	width: 100%;
-	height: 12%;
-	margin: 10px;
-}
-
-.idea-card-text {
-    height: 100%;
-    width: 100%;
-    margin: 0px 10px;
-}
-
-.idea-card-bottom{
-	height: 20px;
-	width: 100%;
-	background-color: #5356A4;
-	display: flex;
-	justify-content: space-between;
-}
-
-.quality{
-	width: 60px;
-	margin: 0px;
-}
-
-@media screen and (max-width: 740px) {
-h1 {
-    font-size: 12px;
-}
-nav {
-    height: 400px;
-}
-h3 {
-    font-size: 10px;
-}
-ul li {
-    font-size: 12px;
-    height: 28px;
-}
-#new-quality-input {
-    height: 10%;
-}
-.menu-button {
-    font-size: 9px;
-    height: 30px;
-}
-#idea-box {
-    display: flex;
-    justify-content: center;
-    overflow: hidden;
-}
 #ideabox-form {
     font-size: 20px;
     height: 90%;
     margin-top: 0.5%;
-    width: 60%;
+    width: 40%;
 }
 .ideabox-form-label {
     font-size: 3vh;
 }
 #ideabox-title-input {
+    border: 2px solid #353567;
     font-size: 20px;
+    height: 25px;
+    margin: 3% 0%;
+    width: 100%;
 }
 #ideabox-body-input {
     border: 2px solid #353567;
     font-size: 14px;
-    height: 40px;
+    height: 75px;
     margin: 1% 0%;
     resize: none;
     width: 100%;
 }
 #ideabox-save-button {
+    background-color: #1f1f3d;
+    border: 2px solid #353567;
     color: #ffffff;
-    height: 25px;
-    margin: 1% 0%;
-    width: 100%;
-    margin: 3% 0%;
-}
-#ideabox-save-button.enable {
-    background: #3f3f88;
-    outline: none;
-    }
-#ideabox-search-input {
-    border: 2px solid #353567;
-    height: 25px;
-    width: 90%;
-    }
-#search-button {
-    height: 25px;
-    }       
-.initial-prompt {
     font-size: 16px;
-    }
-.idea-card{
-    font-size: 12px;
-    }
-    .idea-card{
-    font-size: 12px;
-    }
-}
-
-
-
-
-
-
-
-
-
-@media screen and (max-width: 500px) {
-body {
-    height: 1500px;
-    display: flex;
-    flex-direction: column;
-    }
-#menu-bar {
-    min-height: 450px;
-    display: flex;
-    }
-h1 {
-    font-size: 18px;
-}
-h3 {
-    font-size: 11px;
-}
-ul li {
-    font-size: 14px;
-    height: 30px;
-}
-#new-quality-input {
-    height: 10%;
-}
-.menu-button {
-    font-size: 9px;
-    height: 30px;
-}
-.menu-button:hover {
-    font-size: 9px;
-    height: 30px;
-}
-#idea-box {
-    background-color: #a9aad2;
-    display: flex;
-    justify-content: center;
-    min-height: 350px;
-}
-#ideabox-form {
-    font-size: 20px;
-    height: 100%;
-    margin-top: 5%;
-    width: 80%;
-}
-.ideabox-form-label {
-    font-size: 2vh;
-    justify-content: center;
-}
-#ideabox-title-input {
-    border: 2px solid #353567;
-    font-size: 20px;
     height: 10%;
     margin: 3% 0%;
     width: 100%;
-}
-#ideabox-body-input {
-    border: 2px solid #353567;
-    font-size: 14px;
-    height: 30%;
-    margin: 1% 0%;
-    resize: none;
-    width: 100%;
-}
-#ideabox-save-button {
-    height: 10%;
-    margin: 1% 0%;
-    width: 100%;
-    margin: 3% 0%;
 }
 #ideabox-save-button.enable {
     background: #3f3f88;
@@ -398,25 +130,111 @@ ul li {
     background: #5356A4;
     outline: none;
     }
-#ideabox-search-input {
-    border: 2px solid #353567;
-    height: 25px;
+#search-input-button-container {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    height: 50px;
     width: 100%;
-    }  
-.initial-prompt {
-    font-size: 16px;
-    }
-#storage-box {
-    min-height: 700px;
-    align-content: flex-start;
-    overflow: auto;
-    }
-.idea-card{
-    height: 40%;
-    width: 90%;
-    margin: 10px;
-    font-size: 12px
-    }
 }
+#ideabox-search-input {
+    border-left: none;
+    border: 2px solid #353567;
+    box-sizing: border-box;
+    float: right;
+    height: 30px;
+    width: 100%;
+}
+#search-button {
+    border-right: none;
+    border: 2px solid #353567;
+    box-sizing: border-box;
+    height: 30px;
+    width: 25px;
+    }
+
+/*Storage Box Section*/
+
+.delete,
+.star,
+.upvote-deact,
+.downvote-deact{
+width: 20px;
+}
+
+
+#storage-box {
+align-content: space-around;
+background-color: #eaeaf4;
+display: flex;
+display: flex;
+flex-wrap: wrap;
+grid-column-end: 3;
+justify-content: space-around;
+padding: 10px;
+}
+.hidden {
+display: none;
+}
+.initial-prompt {
+align-self: center;
+font-size: 22px;
+margin-top: 25px;
+margin: auto;
+}
+
+img{
+width: 20px;
+}
+
+.idea-card{
+height: 250px;
+margin: 10px 0px;
+min-width: 40%;
+width: 45%;
+}
+
+.idea-card-top{
+background-color: #1f1f3d;
+display: flex;
+height: 20px;
+justify-content: space-between;
+width: 100%;
+}
+
+article{
+background-color: #ffffff;
+display: flex;
+flex-wrap: wrap;
+height: 80%;
+justify-content: flex-start;
+width: 100%;
+}
+
+h4{
+height: 12%;
+margin: 10px;
+width: 100%;
+}
+
+.idea-card-text {
+height: 100%;
+margin: 0px 10px;
+width: 100%;
+}
+
+.idea-card-bottom{
+background-color: #5356A4;
+display: flex;
+height: 20px;
+justify-content: space-between;
+width: 100%;
+}
+
+.quality{
+margin: 0px;
+width: 60px;
+}
+
     
 
