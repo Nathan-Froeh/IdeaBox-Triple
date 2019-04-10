@@ -1,9 +1,9 @@
+
 var ideaStorageArr = JSON.parse(localStorage.getItem('idea')) || [];
 var ideaTitle = document.querySelector("#ideabox-title-input");
 var ideaBody = document.querySelector("#ideabox-body-input");
 var saveButton = document.querySelector('#ideabox-save-button')
 var ideaSearchBox = document.querySelector('#ideabox-search-input');
-var ideaSearchButton;
 var starredButton = document.querySelector('#starredButton');
 var qualityInput = document.querySelector('#new-quality-input');
 var addQualityButton = document.querySelector('#addQualityButton');
@@ -13,20 +13,17 @@ var qualityUpButton = document.querySelector('.upvote-deact');
 var qualityDownButton = document.querySelector('.downvote-deact');
 var deleteButton = document.querySelector('.delete');
 var initialPrompt = document.querySelector('.initial-prompt');
-
 var storageBoxParent = document.querySelector('#storage-box');
+
+/************ BEGIN EVENT LISTENERS ************/
 
 window.addEventListener('load', retrieveIdea);
 ideaTitle.addEventListener('keyup', checkInputFields);
 ideaBody.addEventListener('keyup', checkInputFields);
 saveButton.addEventListener('click', saveToIdea);
 
-/*****************Aside Menu*************/
-
-//combine into 1 eventListener
 storageBoxParent.addEventListener('click', function(event) {
   if (event.target.className === 'star') {
-    console.log(event.target.parentNode.parentNode.id)
     updateStar(event);
   }
   if (event.target.className === 'delete') {
@@ -35,149 +32,107 @@ storageBoxParent.addEventListener('click', function(event) {
   }
 });
 
-  storageBoxParent.addEventListener('click', function(event) {
-  if (event.target.className === 'upvote-deact') {
-    console.log('up')
-  }
-  if (event.target.className === 'downvote-deact') {
-    console.log('down')
-  }
-});
-
 storageBoxParent.addEventListener('input', function(event){
-  if(event.target.className === 'idea-card-title'){
-    var title = event.target.innerText
-    console.log(event)
+  if (event.target.className === 'idea-card-title') {
+    var title = event.target.innerText;
     updateIdeaText(event, title);
   }
-  else if(event.target.className === 'idea-card-text'){
-    var text = event.target.innerText
+  else if (event.target.className === 'idea-card-text') {
+    var text = event.target.innerText;
     updateIdeaText(event, text);
   }
 })
 
-function saveToIdea(e){
+/************* BEGIN FUNCTIONS ***************/
+
+function saveToIdea(e) {
   event.preventDefault();
   var idea = new Idea(ideaTitle.value,ideaBody.value,Date.now());
   ideaStorageArr.push(idea);
   idea.saveToStorage(ideaStorageArr);
   modifyStar(idea);
-  }
+  };
 
+function makeDeleteArray(e) {
+  ideaStorageArr.forEach(function(idea, index) {
+    var myIdea = reinstantiate(index);
+    if(parseInt(e.target.closest('.idea-card').id) == idea.id) {
+      myIdea.deleteFromStorage(index);
+    };
+  });
+};
 
-function makeDeleteArray(e){
-  ideaStorageArr.forEach(function(idea, index){
-    var myIdea = reinstantiate(index)
-    if(parseInt(e.target.closest('.idea-card').id) == idea.id){
-      console.log(index)
-      myIdea.deleteFromStorage(index)
-    }
-  })
-}
-
-function updateStar(e){
+function updateStar(e) {
   var star = false;
-  e.target.src.match("Images/star.svg") ? e.target.src = "Images/star-active.svg" : e.target.src = "Images/star.svg"
+  e.target.src.match("Images/star.svg") ? e.target.src = "Images/star-active.svg" : e.target.src = "Images/star.svg";
   e.target.src.match("Images/star.svg") ? star = false : star = true;
-  updateStarArray(e, star)
-}
+  updateStarArray(e, star);
+};
 
-function updateStarArray(e, star){
-  ideaStorageArr.forEach(function(idea, index){
-    var myIdea = reinstantiate(index)
-    if(parseInt(e.target.parentNode.parentNode.id) === idea.id){
-      //ideaStorageArr[index].star = !ideaStorageArr[index].star;
-      console.log(ideaStorageArr[index].star)
-      myIdea.updateIdea(ideaStorageArr, index, star)
-    }
+function updateStarArray(e, star) {
+  ideaStorageArr.forEach(function(idea, index) {
+    var myIdea = reinstantiate(index);
+    if (parseInt(e.target.parentNode.parentNode.id) === idea.id) {
+      myIdea.updateIdea(ideaStorageArr, index, star);
+    };
+  });
+};
 
-
-  })
-
-  // for (i = 0; i < ideaStorageArr.length; i++) {
-  //   var sameIdea = new Idea(ideaStorageArr[i].title, ideaStorageArr[i].body,
-  //   ideaStorageArr[i].id, ideaStorageArr[i].quality, ideaStorageArr[i].star);
-  //   tempArr.push(sameIdea);
-  //   if(parseInt(e.target.parentNode.parentNode.id) === sameIdea.id) {
-  //     sameIdea.star = !sameIdea.star;
-  //     sameIdea.updateIdea(sameIdea, i)
-  //   }
-  // }
-}
 function reinstantiate (i) {
   return new Idea(ideaStorageArr[i].title, ideaStorageArr[i].body,
     ideaStorageArr[i].id, ideaStorageArr[i].quality, ideaStorageArr[i].star);
+};
 
-}
-function updateIdeaText(e, updatedText){
-  ideaStorageArr.forEach(function(idea, index){
-    var myIdea = reinstantiate(index)
-    if((parseInt(e.target.parentNode.parentNode.id) === idea.id) && (e.target.className === 'idea-card-title')){
+function updateIdeaText(e, updatedText) {
+  ideaStorageArr.forEach(function(idea, index) {
+    var myIdea = reinstantiate(index);
+    if ((parseInt(e.target.parentNode.parentNode.id) === idea.id) && (e.target.className === 'idea-card-title')){
       ideaStorageArr[index].title = updatedText;
-      myIdea.saveToStorage(ideaStorageArr)
-    } else if((parseInt(e.target.parentNode.parentNode.id) === idea.id) && (e.target.className === 'idea-card-text')){
+      myIdea.saveToStorage(ideaStorageArr);
+    } else if ((parseInt(e.target.parentNode.parentNode.id) === idea.id) && (e.target.className === 'idea-card-text')){
       ideaStorageArr[index].body = updatedText;
-      myIdea.saveToStorage(ideaStorageArr)
-    }
-  })
+      myIdea.saveToStorage(ideaStorageArr);
+    };
+  });
 }
 
  function myFunction(e) {
-  var myIndex = iterate(ideaStorageArr, e.target)
-  var myIdea = reinstatntiate(myIndex)
-  myIdea.star = !myIdea.star
+  var myIndex = iterate(ideaStorageArr, e.target);
+  var myIdea = reinstatntiate(myIndex);
+  myIdea.star = !myIdea.star;
   myIdea.saveToStorage();
- }
-
-
-  // var tempArr = [];
-  // console.log(star)
-  // for (i = 0; i < ideaStorageArr.length; i++) {
-  //   var sameIdea = new Idea(ideaStorageArr[i].title, ideaStorageArr[i].body,
-  //   ideaStorageArr[i].id, ideaStorageArr[i].quality, ideaStorageArr[i].star);
-  //   tempArr.push(sameIdea);
-  //   if(parseInt(e.target.parentNode.parentNode.id) === sameIdea.id) {
-  //     sameIdea.star = !sameIdea.star;
-  //     sameIdea.updateIdea(sameIdea, i)
-  //   }
-  // }
-
-/****************Idea Box*****************/
+ };
 
 function checkInputFields() {
 	if (ideaTitle.value && ideaBody.value !== '') {
-        saveButton.disabled = false;
-        saveButton.classList.add('enable');
+    saveButton.disabled = false;
+    saveButton.classList.add('enable');
 	} else {
-        saveButton.disabled = true;
-        saveButton.classList.remove('enable');
-	}
-}
+    saveButton.disabled = true;
+    saveButton.classList.remove('enable');
+	};
+};
 
-function isStorageEmpty(){
-  if(ideaStorageArr != []){
-    retrieveIdea()
-  }
-}
+function isStorageEmpty() {
+  if (ideaStorageArr != []) {
+    retrieveIdea();
+  };
+};
 
-/****************Storage Box**********/
 function togglePrompt() {
-  //console.log(ideaStorageArr.length);
   if (ideaStorageArr.length > 0) {
-    initialPrompt.classList.add('hidden')
+    initialPrompt.classList.add('hidden');
   } else if (ideaStorageArr.length === 0) {
-    initialPrompt.classList.remove('hidden')
-  }
-}
+    initialPrompt.classList.remove('hidden');
+  };
+};
 
-
-function modifyStar(newIdea){
-  console.log(newIdea.star)
-  if(newIdea.star === true){
+function modifyStar(newIdea) {
+  if(newIdea.star === true) {
     var starValue = 'Images/star-active.svg'
-  }else{starValue = 'Images/star.svg'}
-  genCard(newIdea, starValue)
-}
+  } else {starValue = 'Images/star.svg'};
+  genCard(newIdea, starValue);
+};
 
 function genCard(newIdea, starValue) {
 	var ideaCard = `
