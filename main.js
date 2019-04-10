@@ -24,11 +24,11 @@ saveButton.addEventListener('click', saveToIdea);
 
 storageBoxParent.addEventListener('click', function(event) {
   if (event.target.className === 'star') {
-    updateStar(event);
+    modifyStarImage(event);
   }
   if (event.target.className === 'delete') {
     event.target.closest('.idea-card').remove();
-    makeDeleteArray(event);
+    deleteCard(event);
   }
 });
 
@@ -53,7 +53,7 @@ function saveToIdea(e) {
   modifyStar(idea);
   };
 
-function makeDeleteArray(e) {
+function deleteCard(e) {
   ideaStorageArr.forEach(function(idea, index) {
     var myIdea = reinstantiate(index);
     if(parseInt(e.target.closest('.idea-card').id) == idea.id) {
@@ -62,7 +62,7 @@ function makeDeleteArray(e) {
   });
 };
 
-function updateStar(e) {
+function modifyStarImage(e) {
   var star = false;
   e.target.src.match("Images/star.svg") ? e.target.src = "Images/star-active.svg" : e.target.src = "Images/star.svg";
   e.target.src.match("Images/star.svg") ? star = false : star = true;
@@ -94,14 +94,7 @@ function updateIdeaText(e, updatedText) {
       myIdea.saveToStorage(ideaStorageArr);
     };
   });
-}
-
- function myFunction(e) {
-  var myIndex = iterate(ideaStorageArr, e.target);
-  var myIdea = reinstatntiate(myIndex);
-  myIdea.star = !myIdea.star;
-  myIdea.saveToStorage();
- };
+};
 
 function checkInputFields() {
 	if (ideaTitle.value && ideaBody.value !== '') {
