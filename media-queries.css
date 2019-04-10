@@ -13,50 +13,25 @@ ul li {
     height: 28px;
   }
 #new-quality-input {
-    height: 10%;
+    height: 25%;
   }
 .menu-button {
     font-size: 9px;
     height: 30px;
   }
 #idea-box {
-    display: flex;
-    justify-content: center;
     overflow: hidden;
   }
 #ideabox-form {
-    font-size: 20px;
-    height: 90%;
-    margin-top: 0.5%;
     width: 60%;
   }
-.ideabox-form-label {
-    font-size: 3vh;
-  }
-#ideabox-title-input {
-    font-size: 20px;
-  }
 #ideabox-body-input {
-    border: 2px solid #353567;
-    font-size: 14px;
     height: 40px;
-    margin: 1% 0%;
-    resize: none;
-    width: 100%;
   }
 #ideabox-save-button {
-    color: #ffffff;
     height: 25px;
-    margin: 1% 0%;
-    margin: 3% 0%;
-    width: 100%;
-  }
-#ideabox-save-button.enable {
-    background: #3f3f88;
-    outline: none;
   }
 #ideabox-search-input {
-    border: 2px solid #353567;
     height: 25px;
     width: 90%;
   }
@@ -68,7 +43,7 @@ ul li {
   }
 .idea-card{
     font-size: 12px;
-    width: 80%;
+    width: 45%;
   }
 #storage-box {
     min-height: 700px;
@@ -82,7 +57,6 @@ body {
     height: 1500px;
     }
 #menu-bar {
-    display: flex;
     min-height: 450px;
     }
 h1 {
@@ -98,22 +72,14 @@ ul li {
 #new-quality-input {
     height: 10%;
   }
-.menu-button {
-    font-size: 9px;
-    height: 30px;
-  }
 .menu-button:hover {
     font-size: 9px;
     height: 30px;
   }
 #idea-box {
-    background-color: #a9aad2;
-    display: flex;
-    justify-content: center;
     min-height: 350px;
   }
 #ideabox-form {
-    font-size: 20px;
     height: 100%;
     margin-top: 5%;
     width: 80%;
@@ -123,49 +89,28 @@ ul li {
     justify-content: center;
   }
 #ideabox-title-input {
-    border: 2px solid #353567;
-    font-size: 20px;
     height: 10%;
-    margin: 3% 0%;
-    width: 100%;
   }
 #ideabox-body-input {
-    border: 2px solid #353567;
-    font-size: 14px;
     height: 30%;
-    margin: 1% 0%;
-    resize: none;
-    width: 100%;
   }
 #ideabox-save-button {
     height: 10%;
-    margin: 1% 0%;
-    margin: 3% 0%;
-    width: 100%;
   }
 #ideabox-save-button.enable {
     background: #3f3f88;
     outline: none;
   }
-#ideabox-save-button.enable:hover {
-    background: #5356A4;
-    outline: none;
-  }
 #ideabox-search-input {
-    border: 2px solid #353567;
     height: 25px;
-    width: 100%;
-  }  
-.initial-prompt {
-    font-size: 16px;
   }
 #storage-box {
     align-content: flex-start;
-    min-height: 700px;
-    overflow: auto;
   }
+.initial-prompt {
+  margin-top: 50px;
+}
 .idea-card{
-    font-size: 12px
     height: 40%;
     margin: 10px;
     width: 90%;
