@@ -178,7 +178,7 @@ ul li {
 }
 
 #storage-box {
-	align-content: space-around;
+	align-content: flex-start;
 	background-color: #eaeaf4;
 	display: flex;
 	flex-wrap: wrap;
@@ -192,9 +192,7 @@ ul li {
 }
 
 .initial-prompt {
-	align-self: center;
 	font-size: 22px;
-	margin-top: 25px;
 	margin: auto;
 }
 
@@ -212,7 +210,7 @@ img{
 .idea-card-top{
 	background-color: #1f1f3d;
 	display: flex;
-	height: 20px;
+	height: 25px;
 	justify-content: space-between;
 	width: 100%;
 }
@@ -240,14 +238,15 @@ h4{
 
 .idea-card-bottom{
 	background-color: #5356A4;
+	color: #ffffff;
 	display: flex;
-	height: 20px;
+	height: 25px;
 	justify-content: space-between;
 	width: 100%;
 }
 
 .quality{
-	margin: 0px;
+	margin-top: 5px;
 	width: 60px;
 }
 
