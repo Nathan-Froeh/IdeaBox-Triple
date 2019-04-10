@@ -89,12 +89,14 @@ ul li {
 
 .menu-button:hover {
 	background-color: #353567;
+	border: 2px solid  #5356a4;
 }
 
 #idea-box {
 	background-color: #a9aad2;
 	display: flex;
 	justify-content: center;
+	align-items: center;
 }
 
 #ideabox-form {
