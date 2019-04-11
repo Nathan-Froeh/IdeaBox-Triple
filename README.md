@@ -1,5 +1,5 @@
 # IdeaBox-Triple
-## Project with Nathan Froehlich, and David Engel
+## Project with Nathan Froehlich and David Engel
 
 ### Summary
 This is the third project of module one at the Turing School of Software and Design.  The IdeaBox is a webpage where the user can submit their good ideas for safe keeping, utilizing local storage methods.  This project exposed us to a few different concepts:  seperation of the "data model" and the "DOM model", JavaScript Object Notation, management of client-side interactions, and Object Oriented Programming.  
