@@ -8,6 +8,8 @@ Our webpage has two media queries, one of which activates at <740px wide and the
 
 As for the structure of the webpage, we used grid for the basic skeleton of the page and flexbox for organization of child elements within our grid items.  As the screen size decreases we abandon the grid display and switch to using flexbox only.
 
+Link to github live page:  https://nathan-froeh.github.io/IdeaBox-Triple/
+
 ### Static Comp and Web Page screenshots
 
 #### Static Comp
